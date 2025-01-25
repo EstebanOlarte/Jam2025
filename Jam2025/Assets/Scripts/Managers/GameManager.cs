@@ -23,14 +23,16 @@ public class GameManager : MonoBehaviour
     {
         Instance = this;
     }
-    private void Start()
+    private IEnumerator Start()
     {
         foreach (var candy in _levelConfig.CandyTypes)
         {
             _resources.Add(candy, 0);
         }
-        ResourcesUpdated?.Invoke(_resources);
+        
+        yield return new WaitForEndOfFrame();
 
+        ResourcesUpdated?.Invoke(_resources);
         GameStarted?.Invoke(_levelConfig);
     }
 

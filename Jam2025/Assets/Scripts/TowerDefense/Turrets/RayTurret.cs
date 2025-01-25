@@ -23,7 +23,7 @@ public class RayTurret : BaseTurret
         {
             while (_rays.Count < lowEnemies.Count)
             {
-                _rays.Add(Instantiate(_rayPrefab, _bulletPoint.position, Quaternion.identity));
+                _rays.Add(Instantiate(_rayPrefab, _bulletPoint.position, Quaternion.identity, transform));
             }
 
             for (int i = 0; i < _rays.Count; i++)
