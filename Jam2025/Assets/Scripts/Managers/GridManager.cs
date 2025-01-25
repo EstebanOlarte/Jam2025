@@ -323,7 +323,35 @@ public class GridManager : MonoBehaviour
 
     private CandySO GetRandomCandy(List<CandySO> options)
     {
-        var candy = options[UnityEngine.Random.Range(0, options.Count)];
-        return candy;
+        CandySO selectedCandy = null;
+
+        Dictionary<CandySO, float> weightedOptions = new Dictionary<CandySO, float>();
+        float totalWeight = 0;
+        foreach (var item in options)
+        {
+            weightedOptions.Add(item, item.Rate);
+            totalWeight += item.Rate;
+        }
+
+        float randomValue = UnityEngine.Random.Range(0, totalWeight);
+
+        if (totalWeight > 0)
+        {
+            foreach (var item in weightedOptions)
+            {
+                randomValue -= item.Value;
+                if (randomValue <= 0)
+                {
+                    selectedCandy = item.Key;
+                    break;
+                }
+            }
+        }
+        else
+        {
+            Debug.LogError("No candy options");
+        }
+
+        return selectedCandy;
     }
 }
