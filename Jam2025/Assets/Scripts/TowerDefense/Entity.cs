@@ -10,6 +10,8 @@ public class Entity : MonoBehaviour
 
     public event Action<float> HealthChanged;
 
+    public float Health => _health;
+
     protected virtual void Start()
     {
         _maxHealth = _health;
