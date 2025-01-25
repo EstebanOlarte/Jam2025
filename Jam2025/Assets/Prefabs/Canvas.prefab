@@ -324,6 +324,8 @@ GameObject:
   - component: {fileID: 294953142964747508}
   - component: {fileID: 6703546985277403168}
   - component: {fileID: 7144903718497953631}
+  - component: {fileID: 224151404864252325}
+  - component: {fileID: 4987469330036697619}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -345,11 +347,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 2491190839654306263}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &6703546985277403168
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -371,7 +373,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9339623, g: 0.9339623, b: 0.9339623, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -388,6 +390,46 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &224151404864252325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1908152148237684767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 1
+  m_VerticalFit: 1
+--- !u!114 &4987469330036697619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1908152148237684767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 1
+  m_Spacing: 12
+  m_ChildForceExpandWidth: 0
+  m_ChildForceExpandHeight: 0
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
 --- !u!1 &3306509703900875934
 GameObject:
   m_ObjectHideFlags: 0
@@ -513,8 +555,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -143.2901, y: -332.26477}
-  m_SizeDelta: {x: 221.2396, y: 564.9633}
+  m_AnchoredPosition: {x: -187.80615, y: -164}
+  m_SizeDelta: {x: 351.711, y: 266.93}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5780860082832427566
 CanvasRenderer:
@@ -536,6 +578,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0437abb69f11bab45a7c2787d389cca6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _container: {fileID: 294953142964747508}
+  _turretItemPrefab: {fileID: 945890995799412471, guid: 633690a311bf32646af23ffd64fd3e63, type: 3}
 --- !u!1 &4644035606542442833
 GameObject:
   m_ObjectHideFlags: 0

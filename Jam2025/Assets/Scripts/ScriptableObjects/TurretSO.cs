@@ -6,6 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Turret", menuName = "Game asset/Turret")]
 public class TurretSO : ScriptableObject
 {
+    public string Name;
     public List<TurretPrice> Price;
     public BaseTurret Prefab;
     public Sprite Image;

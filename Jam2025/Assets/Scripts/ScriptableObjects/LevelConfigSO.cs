@@ -11,6 +11,7 @@ public class LevelConfigSO : ScriptableObject
     [SerializeField] public GameObject GridCell;
 
     public List<CandySO> CandyTypes => _candyTypes;
+    public List<TurretSO> Turrets => _turrets;
     public Vector2Int GridSize
     {
         get

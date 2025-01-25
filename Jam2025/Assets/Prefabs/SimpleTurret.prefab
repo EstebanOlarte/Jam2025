@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 1778348141743575477}
   serializedVersion: 2
   m_LocalRotation: {x: -0.68062013, y: -0, z: -0, w: 0.7326366}
-  m_LocalPosition: {x: 0.1239208, y: 0.17034952, z: 0.192}
+  m_LocalPosition: {x: 0, y: 0.17034952, z: 0.192}
   m_LocalScale: {x: 0.17802301, y: 0.17802301, z: 0.17802301}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -92,6 +92,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7927141957600112679}
+  - component: {fileID: 8910524057521610987}
   m_Layer: 0
   m_Name: SimpleTurret
   m_TagString: Untagged
@@ -116,6 +117,19 @@ Transform:
   - {fileID: 2257314478510471392}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8910524057521610987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3765196002153474776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 625663bbc2751b84a892eb052769d3e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: 10
 --- !u!1 &7162515087086840283
 GameObject:
   m_ObjectHideFlags: 0
@@ -143,7 +157,7 @@ Transform:
   m_GameObject: {fileID: 7162515087086840283}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.1239208, y: 0.016, z: 0.003493309}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 1
   m_Children: []

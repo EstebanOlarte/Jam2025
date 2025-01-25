@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
 
     private Dictionary<CandySO, int> _resources = new Dictionary<CandySO, int>();
 
+    private TurretPoint _selectedTurretPoint;
+
 
     public event Action<LevelConfigSO> GameStarted;
     public event Action<Dictionary<CandySO, int>> ResourcesUpdated;
@@ -46,6 +48,10 @@ public class GameManager : MonoBehaviour
 
         ResourcesUpdated?.Invoke(_resources);
     }
+    public bool HasEnoughResources(CandySO candy, int quantity)
+    {
+        return _resources[candy] >= quantity;
+    }
     public bool TryToSpendResource(CandySO candy, int quantity)
     {
         if (_resources[candy] >= quantity)
@@ -64,6 +70,21 @@ public class GameManager : MonoBehaviour
     //Turrets
     public void SelectTurretPoint(TurretPoint turretPoint)
     {
+        _selectedTurretPoint = turretPoint;
         TurretPointSelected?.Invoke(turretPoint);
+    }
+    public void DeselectTurretPoint()
+    {
+        _selectedTurretPoint = null;
+        TurretPointSelected?.Invoke(null);
+    }
+    public List<TurretSO> GetTurrets()
+    {
+        return _levelConfig.Turrets;
+    }
+    public void BuildTurret(TurretSO turret)
+    {
+        _selectedTurretPoint.BuildTurret(turret.Prefab);
+        DeselectTurretPoint();
     }
 }

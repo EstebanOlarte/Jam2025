@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9a470a4b2fa5004f8973f48cc070663, type: 3}
   m_Name: Turret
   m_EditorClassIdentifier: 
+  Name: Simple turret
   Price:
   - CandyType: {fileID: 11400000, guid: e343134cf8d160942bd7472413e4cf10, type: 2}
     Price: 10
-  Prefab: {fileID: 0}
-  Image: {fileID: 0}
+  Prefab: {fileID: 8910524057521610987, guid: 62ef5b58c411ce040837725df24a7ce6, type: 3}
+  Image: {fileID: 21300000, guid: 20f9425b054d782458b93fb487335382, type: 3}
