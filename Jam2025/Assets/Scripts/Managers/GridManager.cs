@@ -1,8 +1,6 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Progress;
 
 public class GridManager : MonoBehaviour
 {
@@ -35,7 +33,6 @@ public class GridManager : MonoBehaviour
         GameManager.Instance.GameStarted += OnGameStarted;
         GameManager.Instance.DamageTaken += OnDamageTaken;
     }
-
 
 
     private void OnGameStarted(LevelConfigSO levelConfig)
@@ -87,11 +84,9 @@ public class GridManager : MonoBehaviour
 
                 var candy = Instantiate(_candyPrefab, _gridParent);
                 candy.Init(candyType, gridSize, new Vector2Int(i, j));
-
                 _candyGrid[i].Add(candy);
             }
         }
-
     }
 
     public void SwapCandy(Vector2Int pos1, Vector2Int pos2)
@@ -103,6 +98,7 @@ public class GridManager : MonoBehaviour
         }
 
     }
+    
     private IEnumerator SwapCandyCoroutine(Vector2Int pos1, Vector2Int pos2)
     {
         _canMove = false;
@@ -139,6 +135,7 @@ public class GridManager : MonoBehaviour
             _canMove = true;
         }
     }
+
     private void ExplodeCandys()
     {
         CalculateResources();
@@ -355,6 +352,7 @@ public class GridManager : MonoBehaviour
             CheckTopRightSquare(pos + new Vector2Int(-1, 0)) ||
             CheckTopRightSquare(pos + new Vector2Int(-1, -1));
     }
+    
     private bool CheckTopRightSquare(Vector2Int pos)
     {
         if (pos.x < 0 || pos.y < 0 || pos.x == _gridSize.x-1 || pos.y == _gridSize.y-1)

@@ -7,6 +7,7 @@ public class LevelConfigSO : ScriptableObject
     [SerializeField] private List<CandySO> _candyTypes;
     [SerializeField] private Vector2Int _gridSize;
     [SerializeField] public int MinConvinations = 3;
+    [SerializeField] public GameObject GridCell;
 
     public List<CandySO> CandyTypes => _candyTypes;
     public Vector2Int GridSize

@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bfa39598127be744fb63c2ea8491e89c, type: 3}
-  m_Name: Candy 1
+  m_Name: Mushroom
   m_EditorClassIdentifier: 
-  Name: Rojo
-  Color: {r: 1, g: 0, b: 0, a: 1}
+  Name: Mushroom
+  Color: {r: 1, g: 1, b: 1, a: 1}
+  Image: {fileID: 21300000, guid: 20f9425b054d782458b93fb487335382, type: 3}
   Weight: 0.2

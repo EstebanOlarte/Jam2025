@@ -14,6 +14,7 @@ public class CandyUI : MonoBehaviour
     {
         _image = GetComponent<Image>();
         _image.color = candy.Color;
+        _image.sprite = candy.Image;
     }
 
     public void Explode(Action onEndAction)
