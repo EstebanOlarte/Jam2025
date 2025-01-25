@@ -29,6 +29,7 @@ public class CandyItem : MonoBehaviour
     [SerializeField] private float _dropMovementTime;
 
     public CandySO CandyType { get => _candyType; private set => _candyType = value; }
+    public float Padding => _padding;
 
     public void Init(CandySO candySO, Vector2Int gridSize, Vector2Int pos)
     {

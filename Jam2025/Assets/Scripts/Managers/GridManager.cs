@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GridManager : MonoBehaviour
 {
@@ -8,6 +9,10 @@ public class GridManager : MonoBehaviour
     [SerializeField] private Transform _gridParent;
     [SerializeField] private CandyItem _candyPrefab;
     [SerializeField] private ResourcesUI _resourcesUI;
+
+    [SerializeField] private GridLayoutGroup _backgroundGridLayout;
+    [SerializeField] private GameObject _backgroundPrefab;
+         
 
     private List<CandyItem>[] _candyGrid;
     private Vector2Int _gridSize;
@@ -95,6 +100,13 @@ public class GridManager : MonoBehaviour
                 candy.SetParticles(_resourcesUI.UIAttractor);
                 _candyGrid[i].Add(candy);
             }
+        }
+        _backgroundGridLayout.spacing = new Vector2(_candyPrefab.Padding, _candyPrefab.Padding);
+        _backgroundGridLayout.constraintCount = gridSize.x;
+
+        for (int i = 0; i < gridSize.x * gridSize.y ; i++)
+        {
+            Instantiate(_backgroundPrefab, _backgroundGridLayout.transform).gameObject.SetActive(true);
         }
     }
 

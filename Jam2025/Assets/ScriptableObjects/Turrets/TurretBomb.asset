@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9a470a4b2fa5004f8973f48cc070663, type: 3}
+  m_Name: TurretBomb
+  m_EditorClassIdentifier: 
+  Name: Bomb turret
+  Price:
+  - CandyType: {fileID: 11400000, guid: 90f588324cdcb2149bd7acec4bc5d5c3, type: 2}
+    Price: 10
+  Prefab: {fileID: 4539191192266147831, guid: 49cac6fbe459c544d90cf3f602569860, type: 3}
+  Image: {fileID: 21300000, guid: cfbdbd51859f43d46a4a10b78c951fbf, type: 3}
