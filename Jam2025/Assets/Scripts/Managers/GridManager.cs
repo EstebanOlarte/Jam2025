@@ -15,6 +15,11 @@ public class GridManager : MonoBehaviour
 
     private List<CandySO> _candyTypes;
 
+    private int _minConvinations;
+    private int _comboMultiplier = 1;
+
+    private bool _canMove = true;
+
     private HashSet<CandyItem> _candysToExplode = new HashSet<CandyItem>();
     private List<CandyItem> _candysToCheck = new List<CandyItem>();
 
@@ -28,10 +33,14 @@ public class GridManager : MonoBehaviour
     private void Start()
     {
         GameManager.Instance.GameStarted += OnGameStarted;
+        GameManager.Instance.DamageTaken += OnDamageTaken;
     }
+
+
 
     private void OnGameStarted(LevelConfigSO levelConfig)
     {
+        _minConvinations = levelConfig.MinConvinations;
         _candyTypes = levelConfig.CandyTypes;
         _gridSize = levelConfig.GridSize;
         CreateGrid(levelConfig.GridSize);
@@ -87,18 +96,32 @@ public class GridManager : MonoBehaviour
 
     public void SwapCandy(Vector2Int pos1, Vector2Int pos2)
     {
-        StartCoroutine(SwapCandyCoroutine(pos1, pos2));
+        if (_canMove)
+        {
+            _comboMultiplier = 1;
+            StartCoroutine(SwapCandyCoroutine(pos1, pos2));
+        }
+
     }
     private IEnumerator SwapCandyCoroutine(Vector2Int pos1, Vector2Int pos2)
     {
+        _canMove = false;
+
         var candy1 = _candyGrid[pos1.x][pos1.y];
         var candy2 = _candyGrid[pos2.x][pos2.y];
+
+        if (candy1.IsBlocked || candy2.IsBlocked)
+        {
+            _canMove = true;
+            yield break;
+        }
+
         _candyGrid[pos1.x][pos1.y] = candy2;
         _candyGrid[pos2.x][pos2.y] = candy1;
         candy1.MoveTo(pos2, true);
         candy2.MoveTo(pos1, true);
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.2f);
 
         if (CheckCombinations(new List<Vector2Int> { pos1, pos2 }))
         {
@@ -112,18 +135,49 @@ public class GridManager : MonoBehaviour
             _candyGrid[pos2.x][pos2.y] = candy1;
             candy1.MoveTo(pos2, true);
             candy2.MoveTo(pos1, true);
+
+            _canMove = true;
         }
     }
     private void ExplodeCandys()
     {
+        CalculateResources();
+
         foreach (var item in _candysToExplode)
         {
+            UnblockCandies(item);
             RemoveCandy(item);
             item.Explode();
         }
 
         _candysToExplode.Clear();
         RefillGrid();
+
+        _comboMultiplier++;
+    }
+
+    private void CalculateResources()
+    {
+        Dictionary<CandySO, int> resources = new Dictionary<CandySO, int>();
+        foreach (var item in _candysToExplode)
+        {
+            if (!resources.ContainsKey(item.CandyType))
+            {
+                resources.Add(item.CandyType, 1);
+            }
+            else
+            {
+                resources[item.CandyType]++;
+            }
+        }
+        foreach (var type in resources)
+        {
+            int bonus = type.Value - _minConvinations;
+            int totalResources = type.Value + bonus;
+
+            GameManager.Instance.AddResource(type.Key, totalResources * _comboMultiplier);
+            Debug.Log($"Added {totalResources * _comboMultiplier} {type.Key.Name} with multiplier of {_comboMultiplier}");
+        }
     }
 
     private void RemoveCandy(CandyItem candy)
@@ -164,7 +218,7 @@ public class GridManager : MonoBehaviour
             }
         }
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.3f);
 
         if (_candysToCheck.Count > 0)
         {
@@ -180,6 +234,10 @@ public class GridManager : MonoBehaviour
             if (reaction)
             {
                 ExplodeCandys();
+            }
+            else
+            {
+                _canMove = true;
             }
         }
     }
@@ -213,7 +271,7 @@ public class GridManager : MonoBehaviour
 
         for (int i = pos.x + 1; i < _candyGrid.Length; i++)
         {
-            if (_candyGrid[i][pos.y].CandyType == candy.CandyType)
+            if (_candyGrid[i][pos.y].CandyType == candy.CandyType && !_candyGrid[i][pos.y].IsBlocked)
             {
                 conectedCandys.Add(_candyGrid[i][pos.y]);
             }
@@ -224,7 +282,7 @@ public class GridManager : MonoBehaviour
         }
         for (int i = pos.x - 1; i >= 0; i--)
         {
-            if (_candyGrid[i][pos.y].CandyType == candy.CandyType)
+            if (_candyGrid[i][pos.y].CandyType == candy.CandyType && !_candyGrid[i][pos.y].IsBlocked)
             {
                 conectedCandys.Add(_candyGrid[i][pos.y]);
             }
@@ -257,7 +315,7 @@ public class GridManager : MonoBehaviour
 
         for (int j = pos.y + 1; j < _gridSize.y; j++)
         {
-            if (_candyGrid[pos.x][j].CandyType == candy.CandyType)
+            if (_candyGrid[pos.x][j].CandyType == candy.CandyType && !_candyGrid[pos.x][j].IsBlocked)
             {
                 conectedCandys.Add(_candyGrid[pos.x][j]);
             }
@@ -268,7 +326,7 @@ public class GridManager : MonoBehaviour
         }
         for (int j = pos.y - 1; j >= 0; j--)
         {
-            if (_candyGrid[pos.x][j].CandyType == candy.CandyType)
+            if (_candyGrid[pos.x][j].CandyType == candy.CandyType && !_candyGrid[pos.x][j].IsBlocked)
             {
                 conectedCandys.Add(_candyGrid[pos.x][j]);
             }
@@ -304,6 +362,14 @@ public class GridManager : MonoBehaviour
             return false;
         }
 
+        if (_candyGrid[pos.x][pos.y].IsBlocked ||
+            _candyGrid[pos.x + 1][pos.y].IsBlocked ||
+            _candyGrid[pos.x][pos.y + 1].IsBlocked ||
+            _candyGrid[pos.x + 1][pos.y +1].IsBlocked)
+        {
+            return false;
+        }
+
         if ((_candyGrid[pos.x][pos.y].CandyType == _candyGrid[pos.x + 1][pos.y].CandyType) &&
             (_candyGrid[pos.x][pos.y].CandyType == _candyGrid[pos.x][pos.y + 1].CandyType) &&
             (_candyGrid[pos.x][pos.y].CandyType == _candyGrid[pos.x + 1][pos.y + 1].CandyType))
@@ -321,6 +387,57 @@ public class GridManager : MonoBehaviour
         }
     }
 
+    private void OnDamageTaken()
+    {
+        for (int i = 0; i < _candyGrid.Length; i++)
+        {
+            for (int j = 0; j < _candyGrid[i].Count -1; j++)
+            {
+                if (_candyGrid[i][j].IsBlocked)
+                {
+                    if (!_candyGrid[i][j + 1].IsBlocked)
+                    {
+                        _candyGrid[i][j+1].Block();
+                        break;
+                    }
+                }
+                else
+                {
+                    break;
+                }
+            }
+        }
+        foreach (var item in _candyGrid)
+        {
+            item[0].Block();
+        }
+    }
+
+    private void UnblockCandies(CandyItem candy)
+    {
+        Vector2Int pos = candy.CurrentPos;
+        List<Vector2Int> adjacentPositions = new List<Vector2Int>
+    {
+        new Vector2Int(pos.x + 1, pos.y), // Right
+        new Vector2Int(pos.x - 1, pos.y), // Left
+        new Vector2Int(pos.x, pos.y + 1), // Up
+        new Vector2Int(pos.x, pos.y - 1)  // Down
+    };
+
+        foreach (var adjacentPos in adjacentPositions)
+        {
+            if (adjacentPos.x >= 0 && adjacentPos.x < _gridSize.x &&
+                adjacentPos.y >= 0 && adjacentPos.y < _gridSize.y)
+            {
+                CandyItem adjacentCandy = _candyGrid[adjacentPos.x][adjacentPos.y];
+                if (adjacentCandy.IsBlocked)
+                {
+                    adjacentCandy.Unblock();
+                }
+            }
+        }
+    }
+
     private CandySO GetRandomCandy(List<CandySO> options)
     {
         CandySO selectedCandy = null;
@@ -329,8 +446,8 @@ public class GridManager : MonoBehaviour
         float totalWeight = 0;
         foreach (var item in options)
         {
-            weightedOptions.Add(item, item.Rate);
-            totalWeight += item.Rate;
+            weightedOptions.Add(item, item.Weight);
+            totalWeight += item.Weight;
         }
 
         float randomValue = UnityEngine.Random.Range(0, totalWeight);

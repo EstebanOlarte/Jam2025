@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfa39598127be744fb63c2ea8491e89c, type: 3}
   m_Name: Candy 5
   m_EditorClassIdentifier: 
-  Color: {r: 1, g: 0.4565042, b: 0, a: 1}
+  Name: Celeste
+  Color: {r: 0, g: 0.8868501, b: 1, a: 1}
+  Weight: 0.2

@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class CandyUI : MonoBehaviour
 {
+    [SerializeField] private GameObject _blockObject;
+
     private Image _image;
 
     public void SetUpCandy(CandySO candy)
@@ -31,5 +33,10 @@ public class CandyUI : MonoBehaviour
 
 
         onEndAction?.Invoke();
+    }
+
+    public void Block(bool block)
+    {
+        _blockObject.SetActive(block);
     }
 }

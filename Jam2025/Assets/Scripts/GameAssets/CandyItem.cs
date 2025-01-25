@@ -17,7 +17,10 @@ public class CandyItem : MonoBehaviour
     private Vector2Int _gridSize;
     private Vector2 _panelGridSize;
 
+    private bool _isBlocked = false;
+
     public Vector2Int CurrentPos => _currentPos;
+    public bool IsBlocked => _isBlocked;
 
     [Header("Movement")]
     [SerializeField] private AnimationCurve _swapMovementCurve;
@@ -116,5 +119,16 @@ public class CandyItem : MonoBehaviour
     public void Explode()
     {
         _candyUI.Explode(()=>Destroy(gameObject));
+    }
+
+    public void Block()
+    {
+        _isBlocked = true;
+        _candyUI.Block(true);
+    }
+    public void Unblock()
+    {
+        _isBlocked = false;
+        _candyUI.Block(false);
     }
 }

@@ -5,15 +5,17 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Candy", menuName = "Game asset/Candy")]
 public class CandySO : ScriptableObject
 {
+    public string Name;
     public Color Color;
     [Range(0f,1f)]
-    public float Rate;
+    public float Weight;
 
     public CandySO() { }
     public CandySO(CandySO candy)
     {
+        Name = candy.Name;
         Color = candy.Color;
-        Rate = candy.Rate;
+        Weight = candy.Weight;
     }
 
 }

@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfa39598127be744fb63c2ea8491e89c, type: 3}
   m_Name: Candy 2
   m_EditorClassIdentifier: 
+  Name: Amarillo
   Color: {r: 1, g: 0.95496154, b: 0, a: 1}
+  Weight: 0.2
