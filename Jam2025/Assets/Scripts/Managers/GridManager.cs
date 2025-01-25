@@ -47,6 +47,13 @@ public class GridManager : MonoBehaviour
     {
         _candyGrid = new List<CandyItem>[gridSize.x];
 
+        RectTransform rectTransform = _gridParent.GetComponent<RectTransform>();
+        RectTransform rectParentTransform = _gridParent.parent.GetComponent<RectTransform>();
+        rectTransform.anchorMin = new Vector2(0.5f, 0.5f);
+        rectTransform.anchorMax = new Vector2(0.5f, 0.5f);
+        rectTransform.sizeDelta = new Vector2(rectParentTransform.rect.width, rectParentTransform.rect.height);
+
+
         for (int i = 0; i < gridSize.x; i++)
         {
             _candyGrid[i] = new List<CandyItem>();

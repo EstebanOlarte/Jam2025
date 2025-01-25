@@ -1,6 +1,6 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CandyItem : MonoBehaviour
@@ -41,8 +41,7 @@ public class CandyItem : MonoBehaviour
 
         _rectTransform = GetComponent<RectTransform>();
 
-        _rectTransform.sizeDelta = new Vector2((_panelGridSize.x/_gridSize.x)-(_padding), (_panelGridSize.y / _gridSize.y) - (_padding));
-
+        _rectTransform.sizeDelta = new Vector2((_panelGridSize.x / _gridSize.x) - (_padding), (_panelGridSize.y / _gridSize.y) - (_padding));
         MoveTo(pos);
 
         var candyInput = GetComponent<CandyDirectionHandler>();

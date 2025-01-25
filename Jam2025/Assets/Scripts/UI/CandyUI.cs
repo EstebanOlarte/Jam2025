@@ -1,22 +1,20 @@
-using Coffee.UIEffects;
 using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using Coffee.UIEffects;
 
 public class CandyUI : MonoBehaviour
 {
+    [SerializeField] private Image _imageCandy;
     [SerializeField] private GameObject _blockObject;
     [SerializeField, Range(0, 10)] private int _outlineShadow = 10;
 
-    private Image _image;
-
     public void SetUpCandy(CandySO candy)
     {
-        _image = GetComponent<Image>();
-        _image.sprite = candy.Image;
-        _image.GetComponent<UIEffect>().shadowColor = candy.Color;
-        _image.GetComponent<UIEffect>().shadowIteration = _outlineShadow;
+        _imageCandy.sprite = candy.Image;
+        _imageCandy.GetComponent<UIEffect>().shadowColor = candy.Color;
+        _imageCandy.GetComponent<UIEffect>().shadowIteration = _outlineShadow;
     }
 
     public void Explode(Action onEndAction)
@@ -27,9 +25,9 @@ public class CandyUI : MonoBehaviour
     {
         transform.localScale = Vector3.one * 1.1f;
 
-        while (_image.color.a > 0)
+        while (_imageCandy.color.a > 0)
         {
-            _image.color = new Color(_image.color.r, _image.color.g, _image.color.b, _image.color.a - (5f * Time.deltaTime));
+            _imageCandy.color = new Color(_imageCandy.color.r, _imageCandy.color.g, _imageCandy.color.b, _imageCandy.color.a - (5f * Time.deltaTime));
 
             yield return new WaitForEndOfFrame();
         }
