@@ -161,7 +161,7 @@ PlayerSettings:
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
     Android: com.TeamBoomie.OgrePop
-    Standalone: com.DefaultCompany.2DProject
+    Standalone: com.Team-Boomie.Ogre-Pop
   buildNumber:
     Standalone: 0
     VisionOS: 0
