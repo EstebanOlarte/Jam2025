@@ -10,6 +10,9 @@ public class LevelConfigSO : ScriptableObject
     [SerializeField] public int MinConvinations = 3;
     [SerializeField] public GameObject GridCell;
 
+    //TODO : Add waves parameters
+    //[Header("Waves")]
+
     public List<CandySO> CandyTypes => _candyTypes;
     public List<TurretSO> Turrets => _turrets;
     public Vector2Int GridSize

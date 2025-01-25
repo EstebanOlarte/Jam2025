@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseEnemy : MonoBehaviour
+public class BaseEnemy : Entity
 {
     [SerializeField] private float _speed = 1f;
-    [SerializeField] private float _health = 10;
+
+    private float _distanceTraveled = 0;
 
     public void SetUp(List<Transform> waypoints)
     {
@@ -19,9 +20,15 @@ public class BaseEnemy : MonoBehaviour
 
         while (true)
         {
-            // Move towards the target waypoint
+            // Calculate the distance to move in this frame
             Vector3 direction = (targetWaypoint.position - transform.position).normalized;
-            transform.position += direction * _speed * Time.deltaTime;
+            float distanceToMove = _speed * Time.deltaTime;
+
+            // Move towards the target waypoint
+            transform.position += direction * distanceToMove;
+
+            // Update the distance traveled
+            _distanceTraveled += distanceToMove;
 
             // Rotate to face the direction of movement
             if (direction != Vector3.zero)
@@ -37,6 +44,8 @@ public class BaseEnemy : MonoBehaviour
                 if (waypointIndex >= waypoints.Count)
                 {
                     // If we have reached the last waypoint, stop the coroutine
+                    GameManager.Instance.TakeDamage();
+                    Destroy(gameObject);
                     yield break;
                 }
                 targetWaypoint = waypoints[waypointIndex];
@@ -44,5 +53,10 @@ public class BaseEnemy : MonoBehaviour
 
             yield return null;
         }
+    }
+
+    public float GetDistanceTraveled()
+    {
+        return _distanceTraveled;
     }
 }
