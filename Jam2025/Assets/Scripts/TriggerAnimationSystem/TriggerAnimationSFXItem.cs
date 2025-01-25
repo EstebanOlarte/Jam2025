@@ -10,7 +10,7 @@ public class TriggerAnimationSFXItem : TriggerAnimationItem<TriggerAnimationSFXD
 
     protected override void OnInit()
     {
-        AudioClip audioClip = Resources.Load<AudioClip>(this.triggerAnimationData.path);
+        AudioClip audioClip = Resources.Load<AudioClip>(this.data.path);
         if (audioClip == null) {
             return;
         }
@@ -22,7 +22,7 @@ public class TriggerAnimationSFXItem : TriggerAnimationItem<TriggerAnimationSFXD
         }
 
         this.audioSource.clip = audioClip;
-        this.audioSource.loop = this.triggerAnimationData.loop;
+        this.audioSource.loop = this.data.loop;
     }
 
     protected override void OnTrigger()
@@ -41,6 +41,6 @@ public class TriggerAnimationSFXItem : TriggerAnimationItem<TriggerAnimationSFXD
             return;
         }
 
-        this.audioSource.volume = this.triggerAnimationData.volume.Evaluate(this.audioSource.time / this.audioSource.clip.length);
+        this.audioSource.volume = this.data.volume.Evaluate(this.audioSource.time / this.audioSource.clip.length);
     }
 }

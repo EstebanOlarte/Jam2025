@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 public abstract class TriggerAnimation<T> : MonoBehaviour where T : TriggerAnimationData
 {
     [SerializeField]
-    protected T triggerAnimationData;
+    protected T data;
 
     private bool alreadyPlayed = false;
 
@@ -17,18 +17,18 @@ public abstract class TriggerAnimation<T> : MonoBehaviour where T : TriggerAnima
 
     public void Trigger(bool ignoreAlreadyPlayed = true)
     {
-        if (!ignoreAlreadyPlayed && this.triggerAnimationData.playOnce && this.alreadyPlayed) {
+        if (!ignoreAlreadyPlayed && this.data.playOnce && this.alreadyPlayed) {
             return;
         }
 
         this.alreadyPlayed = true;
 
-        this.OnTrigger(this.transform, this.triggerAnimationData);
+        this.OnTrigger(this.transform, this.data);
     }
 
     private void OnEnable()
     {
-        if (!this.triggerAnimationData.playOnEnable) {
+        if (!this.data.playOnEnable) {
             return;
         }
 
@@ -37,7 +37,7 @@ public abstract class TriggerAnimation<T> : MonoBehaviour where T : TriggerAnima
 
     private void OnDisable()
     {
-        if (!this.triggerAnimationData.playOnDisable) {
+        if (!this.data.playOnDisable) {
             return;
         }
 

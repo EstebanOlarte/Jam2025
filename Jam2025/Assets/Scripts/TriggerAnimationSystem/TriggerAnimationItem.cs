@@ -2,8 +2,8 @@ using UnityEngine;
 
 public abstract class TriggerAnimationItem<T> : MonoBehaviour where T : TriggerAnimationData
 {
-    protected T triggerAnimationData;
-    private Transform target = null;
+    protected T data;
+    protected Transform target = null;
 
     private bool hasInitialized = false;
 
@@ -14,7 +14,7 @@ public abstract class TriggerAnimationItem<T> : MonoBehaviour where T : TriggerA
     public void SetData(Transform target, T triggerAnimationData)
     {
         this.target = target;
-        this.triggerAnimationData = triggerAnimationData;
+        this.data = triggerAnimationData;
         this.OnInit();
         this.hasInitialized = true;
     }
@@ -25,12 +25,12 @@ public abstract class TriggerAnimationItem<T> : MonoBehaviour where T : TriggerA
     }
 
     protected virtual void Update() {
-        if (this.hasInitialized && (!this.IsPlaying() || (this.triggerAnimationData.destroyWithTarget && this.target == null))) {
+        if (this.hasInitialized && (!this.IsPlaying() || (this.data.destroyWithTarget && this.target == null))) {
             Object.DestroyImmediate(this.gameObject);
             return;
         }
 
-        if (!this.triggerAnimationData.followTarget || this.target == null) {
+        if (!this.data.followTarget || this.target == null) {
             return;
         }
 
@@ -39,10 +39,10 @@ public abstract class TriggerAnimationItem<T> : MonoBehaviour where T : TriggerA
 
     public void Trigger()
     {
-        if (this.triggerAnimationData == null) {
+        if (this.data == null) {
             return;
         }
 
-        this.Invoke(nameof(this.TriggerDelayed), this.triggerAnimationData.delay);
+        this.Invoke(nameof(this.TriggerDelayed), this.data.delay);
     }
 }
