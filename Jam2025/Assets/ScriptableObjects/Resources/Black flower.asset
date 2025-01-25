@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bfa39598127be744fb63c2ea8491e89c, type: 3}
-  m_Name: Candy 5
+  m_Name: Black flower
   m_EditorClassIdentifier: 
-  Name: Celeste
-  Color: {r: 0, g: 0.8868501, b: 1, a: 1}
+  Name: Black flower
+  Color: {r: 1, g: 1, b: 1, a: 1}
+  Image: {fileID: 21300000, guid: cfbdbd51859f43d46a4a10b78c951fbf, type: 3}
   Weight: 0.2

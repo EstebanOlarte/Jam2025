@@ -18,7 +18,7 @@ public class ResourcesUI : MonoBehaviour
 
         foreach (var item in dictionary)
         {
-            _text.text += $"{item.Key.Name}: {item.Value}\n";
+            _text.text += $"{item.Key.Name}: {item.Value} | ";
         }
 
     }
