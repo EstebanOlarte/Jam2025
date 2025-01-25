@@ -1,7 +1,6 @@
-using System;
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
+using Coffee.UIExtensions;
 
 public class CandyItem : MonoBehaviour
 {
@@ -46,6 +45,11 @@ public class CandyItem : MonoBehaviour
 
         var candyInput = GetComponent<CandyDirectionHandler>();
         candyInput.DropCandy += OnDropCandy;
+    }
+
+    public void SetParticles(UIParticleAttractor attractor)
+    {
+        attractor.AddParticleSystem(_candyUI.UIParticleSystem);
     }
 
     private void OnDropCandy(Vector2Int dir)

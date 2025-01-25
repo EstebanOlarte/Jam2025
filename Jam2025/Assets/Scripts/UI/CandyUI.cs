@@ -10,6 +10,8 @@ public class CandyUI : MonoBehaviour
     [SerializeField] private GameObject _blockObject;
     [SerializeField, Range(0, 10)] private int _outlineShadow = 10;
 
+    public ParticleSystem UIParticleSystem;
+
     public void SetUpCandy(CandySO candy)
     {
         _imageCandy.sprite = candy.Image;
@@ -24,6 +26,8 @@ public class CandyUI : MonoBehaviour
     private IEnumerator ExplodeCoroutine(Action onEndAction)
     {
         transform.localScale = Vector3.one * 1.1f;
+        UIParticleSystem.transform.parent.gameObject.SetActive(true);
+        UIParticleSystem.Emit(5);
 
         while (_imageCandy.color.a > 0)
         {
@@ -32,6 +36,10 @@ public class CandyUI : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
 
+        while (UIParticleSystem.particleCount > 0)
+        {
+            yield return new WaitForEndOfFrame();
+        }
 
         onEndAction?.Invoke();
     }

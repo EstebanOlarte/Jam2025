@@ -1,3 +1,4 @@
+using Coffee.UIExtensions;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -5,6 +6,8 @@ using UnityEngine;
 public class ResourcesUI : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _text;
+    public UIParticleAttractor UIAttractor;
+
     void Start()
     {
         GameManager.Instance.ResourcesUpdated += OnResourcesUpdated;

@@ -7,6 +7,7 @@ public class GridManager : MonoBehaviour
     [Header("Grid")]
     [SerializeField] private Transform _gridParent;
     [SerializeField] private CandyItem _candyPrefab;
+    [SerializeField] private ResourcesUI _resourcesUI;
 
     private List<CandyItem>[] _candyGrid;
     private Vector2Int _gridSize;
@@ -91,6 +92,7 @@ public class GridManager : MonoBehaviour
 
                 var candy = Instantiate(_candyPrefab, _gridParent);
                 candy.Init(candyType, gridSize, new Vector2Int(i, j));
+                candy.SetParticles(_resourcesUI.UIAttractor);
                 _candyGrid[i].Add(candy);
             }
         }
@@ -198,6 +200,7 @@ public class GridManager : MonoBehaviour
 
                 CandyItem candy = Instantiate(_candyPrefab, _gridParent);
                 candy.Init(type, _gridSize, new Vector2Int(i, _candyGrid[i].Count));
+                candy.SetParticles(_resourcesUI.UIAttractor);
 
                 _candyGrid[i].Add(candy);
             }
