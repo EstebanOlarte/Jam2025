@@ -30,7 +30,7 @@ public class TriggerAnimationVFXItem : TriggerAnimationItem<TriggerAnimationVFXD
             return;
         }
 
-        GameObject ob = Resources.Load<GameObject>(this.triggerAnimationData.path);
+        GameObject ob = Resources.Load<GameObject>(this.data.path);
         if (ob == null) {
             return;
         }
@@ -40,7 +40,10 @@ public class TriggerAnimationVFXItem : TriggerAnimationItem<TriggerAnimationVFXD
 
         foreach (ParticleSystem particle in this.particles) {
             ParticleSystem.MainModule mainParticleSystem = particle.main;
-            mainParticleSystem.loop = this.triggerAnimationData.loop;
+            mainParticleSystem.loop = this.data.loop;
+            if (this.data.inheritSize && this.target != null) {
+                particle.transform.localScale = this.target.localScale;
+            }
         }
     }
 }
