@@ -13,10 +13,20 @@ public class ResourcesUI : MonoBehaviour
     private void OnResourcesUpdated(Dictionary<CandySO, int> dictionary)
     {
         _text.text = "";
+        int currentResource = 0;
+        int resourceSize = dictionary.Count;
 
         foreach (var item in dictionary)
         {
-            _text.text += $"{item.Key.Name}: {item.Value} | ";
+            currentResource++;
+            if (currentResource == dictionary.Count)
+            {
+                _text.text += $"<sprite={item.Key.TextReference}>: {item.Value}";
+            }
+            else
+            {
+                _text.text += $"<sprite={item.Key.TextReference}>: {item.Value} | ";
+            }
         }
 
     }

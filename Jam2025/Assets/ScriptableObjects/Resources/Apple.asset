@@ -15,5 +15,5 @@ MonoBehaviour:
   Name: Apple
   Color: {r: 1, g: 0, b: 0, a: 1}
   Image: {fileID: 21300000, guid: 6c3596e9658efb04d8a755ba283e4e10, type: 3}
-  TextReference: 
+  TextReference: 0
   Weight: 0.2
