@@ -6,7 +6,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private LevelConfigSO _levelConfig;
-
+    [SerializeField] private List<BaseTurret> turretPrefabs;
 
     public static GameManager Instance { get; private set; }
 
@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public event Action<LevelConfigSO> GameStarted;
     public event Action<Dictionary<CandySO, int>> ResourcesUpdated;
     public event Action DamageTaken;
+    public event Action<TurretPoint> TurretPointSelected;
 
     private void Awake()
     {
@@ -59,5 +60,11 @@ public class GameManager : MonoBehaviour
     public void TakeDamage()
     {
         DamageTaken?.Invoke();
+    }
+
+    //Turrets
+    public void SelectTurretPoint(TurretPoint turretPoint)
+    {
+        TurretPointSelected?.Invoke(turretPoint);
     }
 }

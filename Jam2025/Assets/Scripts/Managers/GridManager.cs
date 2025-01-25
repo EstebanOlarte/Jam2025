@@ -173,7 +173,6 @@ public class GridManager : MonoBehaviour
             int totalResources = type.Value + bonus;
 
             GameManager.Instance.AddResource(type.Key, totalResources * _comboMultiplier);
-            Debug.Log($"Added {totalResources * _comboMultiplier} {type.Key.Name} with multiplier of {_comboMultiplier}");
         }
     }
 

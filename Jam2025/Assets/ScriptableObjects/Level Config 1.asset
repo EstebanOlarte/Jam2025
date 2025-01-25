@@ -17,7 +17,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 90f588324cdcb2149bd7acec4bc5d5c3, type: 2}
   - {fileID: 11400000, guid: 8206cd7722046dd4daff03123d1ef04c, type: 2}
   - {fileID: 11400000, guid: d807f5dee5ebd474dbcf2f9f64fcd640, type: 2}
-  - {fileID: 11400000, guid: be83fd2f86e011b47ab55cadb15e2b4a, type: 2}
-  _gridSize: {x: 7, y: 5}
+  _gridSize: {x: 5, y: 5}
   MinConvinations: 3
-  GridCell: {fileID: 500081147727123183, guid: c9e9999ad5c72f840abd10fb24e46626, type: 3}
