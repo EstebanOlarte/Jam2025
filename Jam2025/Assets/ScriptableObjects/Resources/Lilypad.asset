@@ -15,4 +15,5 @@ MonoBehaviour:
   Name: Lilypad
   Color: {r: 0.2119751, g: 1, b: 0, a: 1}
   Image: {fileID: 21300000, guid: ef4e0c13aa3a3f84c9f6ff0423019f5c, type: 3}
+  TextReference: 3
   Weight: 0.2
