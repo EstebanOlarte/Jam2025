@@ -36,6 +36,7 @@ public class TriggerAnimationSFXItem : TriggerAnimationItem<TriggerAnimationSFXD
 
     protected override void Update()
     {
+        base.Update();
         if (this.audioSource == null) {
             return;
         }

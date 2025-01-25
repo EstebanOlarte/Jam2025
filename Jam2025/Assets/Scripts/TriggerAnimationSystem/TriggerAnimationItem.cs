@@ -25,7 +25,7 @@ public abstract class TriggerAnimationItem<T> : MonoBehaviour where T : TriggerA
     }
 
     protected virtual void Update() {
-        if (this.hasInitialized && !this.IsPlaying()) {
+        if (this.hasInitialized && (!this.IsPlaying() || (this.triggerAnimationData.destroyWithTarget && this.target == null))) {
             Object.DestroyImmediate(this.gameObject);
             return;
         }

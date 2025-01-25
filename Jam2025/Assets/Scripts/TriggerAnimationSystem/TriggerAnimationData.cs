@@ -9,6 +9,7 @@ public class TriggerAnimationData
     public bool playOnDisable = false;
     public bool playOnce = false;
     public bool followTarget = false;
+    public bool destroyWithTarget = false;
 
     public float delay = 0;
 }

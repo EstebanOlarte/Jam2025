@@ -15,9 +15,9 @@ public abstract class TriggerAnimation<T> : MonoBehaviour where T : TriggerAnima
 
     protected abstract void OnTrigger(Transform target, T triggerAnimationData);
 
-    protected void Trigger()
+    public void Trigger(bool ignoreAlreadyPlayed = true)
     {
-        if (this.triggerAnimationData.playOnce && this.alreadyPlayed) {
+        if (!ignoreAlreadyPlayed && this.triggerAnimationData.playOnce && this.alreadyPlayed) {
             return;
         }
 
@@ -32,7 +32,7 @@ public abstract class TriggerAnimation<T> : MonoBehaviour where T : TriggerAnima
             return;
         }
 
-        this.Trigger();
+        this.Trigger(false);
     }
 
     private void OnDisable()
@@ -41,6 +41,6 @@ public abstract class TriggerAnimation<T> : MonoBehaviour where T : TriggerAnima
             return;
         }
 
-        this.Trigger();
+        this.Trigger(false);
     }
 }
