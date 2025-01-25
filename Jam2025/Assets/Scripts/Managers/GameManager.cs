@@ -6,7 +6,6 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private LevelConfigSO _levelConfig;
-    [SerializeField] private List<BaseTurret> turretPrefabs;
 
     public static GameManager Instance { get; private set; }
 
