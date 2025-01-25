@@ -46,4 +46,11 @@ public class TriggerAnimationVFXItem : TriggerAnimationItem<TriggerAnimationVFXD
             }
         }
     }
+
+    protected override void Stop()
+    {
+        foreach (ParticleSystem particle in this.particles) {
+            particle.Stop(false, ParticleSystemStopBehavior.StopEmitting);
+        }
+    }
 }

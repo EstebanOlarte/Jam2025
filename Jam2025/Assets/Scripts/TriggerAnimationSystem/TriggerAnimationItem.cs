@@ -8,6 +8,7 @@ public abstract class TriggerAnimationItem<T> : MonoBehaviour where T : TriggerA
     private bool hasInitialized = false;
 
     protected abstract bool IsPlaying();
+    protected abstract void Stop();
     protected abstract void OnTrigger();
     protected abstract void OnInit();
 
@@ -25,8 +26,17 @@ public abstract class TriggerAnimationItem<T> : MonoBehaviour where T : TriggerA
     }
 
     protected virtual void Update() {
-        if (this.hasInitialized && (!this.IsPlaying() || (this.data.destroyWithTarget && this.target == null))) {
+        if (!this.hasInitialized) {
+            return;
+        }
+
+        if (!this.IsPlaying()) {
             Object.DestroyImmediate(this.gameObject);
+            return;
+        }
+
+        if (this.data.destroyWithTarget && this.target == null) {
+            this.Stop();
             return;
         }
 

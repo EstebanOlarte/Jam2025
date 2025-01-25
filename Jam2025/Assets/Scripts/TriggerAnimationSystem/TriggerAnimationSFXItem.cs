@@ -34,6 +34,15 @@ public class TriggerAnimationSFXItem : TriggerAnimationItem<TriggerAnimationSFXD
         this.audioSource.Play();
     }
 
+    protected override void Stop()
+    {
+        if (this.audioSource == null) {
+            return;
+        }
+
+        this.audioSource.Stop();
+    }
+
     protected override void Update()
     {
         base.Update();
