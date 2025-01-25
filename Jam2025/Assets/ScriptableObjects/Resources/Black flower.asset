@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Black flower
   m_EditorClassIdentifier: 
   Name: Black flower
-  Color: {r: 1, g: 1, b: 1, a: 1}
+  Color: {r: 0, g: 0, b: 0, a: 1}
   Image: {fileID: 21300000, guid: cfbdbd51859f43d46a4a10b78c951fbf, type: 3}
   Weight: 0.2

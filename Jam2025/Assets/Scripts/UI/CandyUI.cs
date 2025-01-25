@@ -1,20 +1,22 @@
+using Coffee.UIEffects;
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class CandyUI : MonoBehaviour
 {
     [SerializeField] private GameObject _blockObject;
+    [SerializeField, Range(0, 10)] private int _outlineShadow = 10;
 
     private Image _image;
 
     public void SetUpCandy(CandySO candy)
     {
         _image = GetComponent<Image>();
-        _image.color = candy.Color;
         _image.sprite = candy.Image;
+        _image.GetComponent<UIEffect>().shadowColor = candy.Color;
+        _image.GetComponent<UIEffect>().shadowIteration = _outlineShadow;
     }
 
     public void Explode(Action onEndAction)

@@ -6,8 +6,8 @@ public class CandySO : ScriptableObject
     public string Name;
     public Color Color;
     public Sprite Image;
-    [Range(0f,1f)]
-    public float Weight;
+    public string TextReference;
+    [Range(0f,1f)] public float Weight;
 
     public CandySO() { }
     public CandySO(CandySO candy)

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Lilypad
   m_EditorClassIdentifier: 
   Name: Lilypad
-  Color: {r: 1, g: 1, b: 1, a: 1}
+  Color: {r: 0.2119751, g: 1, b: 0, a: 1}
   Image: {fileID: 21300000, guid: ef4e0c13aa3a3f84c9f6ff0423019f5c, type: 3}
   Weight: 0.2

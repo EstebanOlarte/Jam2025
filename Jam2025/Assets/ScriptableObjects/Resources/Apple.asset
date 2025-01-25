@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Apple
   m_EditorClassIdentifier: 
   Name: Apple
-  Color: {r: 1, g: 1, b: 1, a: 1}
+  Color: {r: 1, g: 0, b: 0, a: 1}
   Image: {fileID: 21300000, guid: 6c3596e9658efb04d8a755ba283e4e10, type: 3}
+  TextReference: 
   Weight: 0.2
