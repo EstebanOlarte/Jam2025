@@ -19,6 +19,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d807f5dee5ebd474dbcf2f9f64fcd640, type: 2}
   _turrets:
   - {fileID: 11400000, guid: 9cad2e2075e5c774e81992baf3e1722f, type: 2}
-  _gridSize: {x: 5, y: 5}
+  _gridSize: {x: 7, y: 5}
   MinConvinations: 3
   GridCell: {fileID: 0}
