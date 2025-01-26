@@ -33,7 +33,7 @@ public abstract class TriggerAnimationItem<T> : MonoBehaviour where T : TriggerA
         }
 
         if (!this.IsPlaying()) {
-            Object.DestroyImmediate(this.gameObject);
+            Object.Destroy(this.gameObject);
             return;
         }
 

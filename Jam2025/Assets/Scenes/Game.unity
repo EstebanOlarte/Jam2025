@@ -2086,6 +2086,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _colider: {fileID: 1194888327}
   _turretPoint: {fileID: 23816708}
+--- !u!1 &1263895894 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 6a83194afc473f04790a4d585159bac9, type: 3}
+  m_PrefabInstance: {fileID: 1474911801}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1444675574
 GameObject:
   m_ObjectHideFlags: 0
@@ -2356,13 +2361,59 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6a83194afc473f04790a4d585159bac9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1474911804}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6a83194afc473f04790a4d585159bac9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1474911805}
   m_SourcePrefab: {fileID: 100100000, guid: 6a83194afc473f04790a4d585159bac9, type: 3}
 --- !u!4 &1474911802 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6a83194afc473f04790a4d585159bac9, type: 3}
   m_PrefabInstance: {fileID: 1474911801}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1474911803 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 6a83194afc473f04790a4d585159bac9, type: 3}
+  m_PrefabInstance: {fileID: 1474911801}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1474911804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1263895894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcfdf2335851d4c49afd31db2d893dff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 1474911803}
+--- !u!114 &1474911805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1263895894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30d866f507b3d3349ab9c5bfc3650abe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data:
+    path: VFX/VFX_OgreDead
+    loop: 0
+    playOnEnable: 0
+    playOnDisable: 1
+    playOnce: 1
+    followTarget: 0
+    destroyWithTarget: 0
+    delay: 0
+    inheritSize: 0
 --- !u!1 &1611587059
 GameObject:
   m_ObjectHideFlags: 0
