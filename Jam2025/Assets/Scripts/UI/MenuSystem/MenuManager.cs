@@ -1,16 +1,15 @@
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
 {
     public static MenuManager Instance;
 
     [Header("Menus")]
+    public TopBannerUI TopBannerUI;
 
     [Header("Popup Items")]
-    [SerializeField] private LosePopup _losePopup;
-    [SerializeField] private TopBannerUI _topBannerUI;
+    public LosePopup LosePopup;
+    public FeedbackUI FeedbackUI;
 
     private void Awake()
     {
@@ -26,12 +25,12 @@ public class MenuManager : MonoBehaviour
     private void OnLoseGame()
     {
         Time.timeScale = 0;
-        _losePopup.gameObject.SetActive(true);
+        LosePopup.gameObject.SetActive(true);
     }
 
     private void OnWaveChange (int newWave)
     {
-        _topBannerUI.UpdateWave(newWave);
+        TopBannerUI.UpdateWave(newWave);
     }
 
 

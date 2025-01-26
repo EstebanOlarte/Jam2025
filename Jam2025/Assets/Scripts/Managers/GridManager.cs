@@ -115,7 +115,6 @@ public class GridManager : MonoBehaviour
             _comboMultiplier = 1;
             StartCoroutine(SwapCandyCoroutine(pos1, pos2));
         }
-
     }
     
     private IEnumerator SwapCandyCoroutine(Vector2Int pos1, Vector2Int pos2)
@@ -170,6 +169,7 @@ public class GridManager : MonoBehaviour
         RefillGrid();
 
         _comboMultiplier++;
+        MenuManager.Instance.FeedbackUI.AddCombo(_comboMultiplier);
     }
 
     private void CalculateResources()
