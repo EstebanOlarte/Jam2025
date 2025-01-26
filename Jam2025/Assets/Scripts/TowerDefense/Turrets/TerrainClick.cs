@@ -4,6 +4,6 @@ public class TerrainClick : MonoBehaviour
 {
     private void OnMouseDown()
     {
-        GameManager.Instance.SelectTurretPoint(null);
+        GameManager.Instance.DeselectTurretPoint();
     }
 }

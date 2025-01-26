@@ -63,7 +63,7 @@ public class TurretsUI : MonoBehaviour
 
     private void closeMenu()
     {
-        GameManager.Instance.SelectTurretPoint(null);
+        GameManager.Instance.DeselectTurretPoint();
         _closeTurrentMenu.gameObject.SetActive(false);
     }
 
@@ -76,5 +76,7 @@ public class TurretsUI : MonoBehaviour
 
         var turretItem = Instantiate(_turretItemPrefab, _container);
         turretItem.SetUpUpgrade(_selectedTurret, _selectedTurretInstance);
+
+        _closeTurrentMenu.gameObject.SetActive(true);
     }
 }
