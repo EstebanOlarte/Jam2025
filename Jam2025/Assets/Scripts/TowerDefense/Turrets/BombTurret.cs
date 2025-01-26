@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BombTurret : BaseTurret
@@ -72,7 +73,22 @@ public class BombTurret : BaseTurret
 
         yield return new WaitForSeconds(0.35f);
 
-        BaseEnemy targetEnemy = enemies[0];
+        BaseEnemy targetEnemy = null;
+
+        for (int i = 0; i < enemies.Count; i++)
+        {
+            if (enemies[i] != null)
+            {
+                targetEnemy = enemies[i];
+                break;
+            }
+        }
+
+        if (targetEnemy == null)
+        {
+            yield break;
+        }
+
         Vector3 spawnPosition = targetEnemy.transform.position + Vector3.up * 2f; // Spawn a bit above the enemy
         GameObject bullet = Instantiate(_bulletPrefab, spawnPosition, Quaternion.identity, transform);
         bullet.transform.localScale = Vector3.one * _bulletRadius * 2f;
