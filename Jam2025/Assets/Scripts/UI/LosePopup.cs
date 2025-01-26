@@ -17,6 +17,14 @@ public class LosePopup : Popup
     private void Start()
     {
         _resetBtn.onClick.AddListener(() => ResetLevel());
+
+        SetUIData();
+    }
+
+    private void SetUIData()
+    {
+        _scoreTMP.text = "0";
+        _highScoreTMP.text = "0";
     }
 
     public void SetScore(int score)

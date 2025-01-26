@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class MenuManager : MonoBehaviour
@@ -34,10 +36,33 @@ public class MenuManager : MonoBehaviour
         GameManager.Instance.WaveChange -= OnWaveChange;
     }
 
-    private void OnLoseGame()
+    private IEnumerator LoseGameCoroutine()
     {
+        float waitTime = 7f;
+        float slowDownDuration = 3f; // Duration to slow down time (in seconds)
+        float targetTimeScale = 0.1f; // Minimum timescale before stopping
+
+        yield return new WaitForSecondsRealtime(waitTime - slowDownDuration);
+
+        float elapsedTime = 0f;
+        float initialTimeScale = Time.timeScale;
+
+        while (elapsedTime < slowDownDuration)
+        {
+            elapsedTime += Time.unscaledDeltaTime;
+            Time.timeScale = Mathf.Lerp(initialTimeScale, targetTimeScale, elapsedTime / slowDownDuration);
+            yield return null;
+        }
+
+        Time.timeScale = 0f;
+
         Time.timeScale = 0;
         LosePopup.gameObject.SetActive(true);
+    }
+
+    private void OnLoseGame()
+    {
+        StartCoroutine(LoseGameCoroutine());
     }
 
     private void OnWaveChange (int newWave)

@@ -1,4 +1,3 @@
-using UnityEditor.Purchasing;
 using UnityEngine;
 
 public abstract class TriggerAnimation<T> : MonoBehaviour where T : TriggerAnimationData
