@@ -6,7 +6,7 @@ using UnityEngine;
 public class Entity : MonoBehaviour
 {
     [SerializeField] protected float _health;
-    private float _maxHealth;
+    protected float _maxHealth;
 
     public event Action<float> HealthChanged;
 
@@ -15,7 +15,7 @@ public class Entity : MonoBehaviour
     protected virtual void Start()
     {
         _maxHealth = _health;
-        HealthChanged?.Invoke(_health/_maxHealth);
+        HealthChanged?.Invoke(1);
     }
 
     public virtual void TakeDamage(float damage)

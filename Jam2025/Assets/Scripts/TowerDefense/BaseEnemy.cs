@@ -8,8 +8,13 @@ public class BaseEnemy : Entity
 
     private float _distanceTraveled = 0;
 
-    public void SetUp(List<Transform> waypoints)
+    public void SetUp(List<Transform> waypoints, int waveNumber)
     {
+        _health = _health + ((waveNumber - 1f) * (1f + (1.2f * Mathf.Floor(waveNumber / 4f))));
+        _maxHealth = _health;
+
+        _speed = Mathf.Min(_speed + (waveNumber * 0.01f), _speed * 3f);
+
         StartCoroutine(FollowPath(waypoints));
     }
 

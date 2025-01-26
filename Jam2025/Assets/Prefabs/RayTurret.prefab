@@ -291,8 +291,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: 10
   _range: 1.6
-  _damageCooldown: 0.02
-  _damagePerTic: 0.05
+  _damageCooldown: 0.04
+  _damagePerTic: 0.1
   _maxTargets: 3
   _bulletPoint: {fileID: 7566210070710858749}
   _rayPrefab: {fileID: 9123400318374614643}

@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
     private Dictionary<CandySO, int> _resources = new Dictionary<CandySO, int>();
+    private int _priceMultiplier = 1;
 
     private TurretPoint _selectedTurretPoint;
 
@@ -18,6 +19,8 @@ public class GameManager : MonoBehaviour
     public event Action<Dictionary<CandySO, int>> ResourcesUpdated;
     public event Action DamageTaken;
     public event Action<TurretPoint> TurretPointSelected;
+
+    public int PriceMultiplier => _priceMultiplier;
 
     private void Awake()
     {
@@ -88,5 +91,7 @@ public class GameManager : MonoBehaviour
     {
         _selectedTurretPoint.BuildTurret(turret.Prefab);
         DeselectTurretPoint();
+
+        _priceMultiplier++;
     }
 }
