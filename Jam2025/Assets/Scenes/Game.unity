@@ -2200,6 +2200,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1469930349}
   - component: {fileID: 1469930350}
+  - component: {fileID: 1469930351}
   m_Layer: 0
   m_Name: Game
   m_TagString: Untagged
@@ -2235,6 +2236,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _levelConfig: {fileID: 11400000, guid: 67b265d4b504c854683e98c9cc22b25b, type: 2}
+--- !u!114 &1469930351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1469930348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59c2499b7b9366146af7f6796e24c49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data:
+    path: Music/Game_Song
+    loop: 1
+    playOnEnable: 1
+    playOnDisable: 0
+    playOnce: 1
+    followTarget: 0
+    destroyWithTarget: 0
+    delay: 0
+    volume:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0.3
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 0.3
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
 --- !u!1001 &1474911801
 PrefabInstance:
   m_ObjectHideFlags: 0

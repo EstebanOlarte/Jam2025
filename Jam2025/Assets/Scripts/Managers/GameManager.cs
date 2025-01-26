@@ -15,7 +15,6 @@ public class GameManager : MonoBehaviour
 
     private TurretPoint _selectedTurretPoint;
 
-
     public event Action<LevelConfigSO> GameStarted;
     public event Action<Dictionary<CandySO, int>> ResourcesUpdated;
     public event Action DamageTaken;
@@ -28,8 +27,16 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        GameStarted = null;
+        ResourcesUpdated = null;
+        DamageTaken = null;
+        TurretPointSelected = null;
+        WaveChange = null;
+        ScoreChanged = null;
+
         Instance = this;
     }
+
     private IEnumerator Start()
     {
         foreach (var candy in _levelConfig.CandyTypes)
@@ -103,6 +110,14 @@ public class GameManager : MonoBehaviour
         DeselectTurretPoint();
 
         _priceMultiplier++;
+    }
+
+    public void SellTurret()
+    {
+        _selectedTurretPoint.SellTurret();
+        DeselectTurretPoint();
+
+        _priceMultiplier--;
     }
 
     public void UpgradeTurret(BaseTurret baseTurret)

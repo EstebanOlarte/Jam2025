@@ -6,6 +6,7 @@ public class TurretsUI : MonoBehaviour
     [SerializeField] private Transform _container;
     [SerializeField] private Button _closeTurrentMenu;
     [SerializeField] private TurretItemUI _turretItemPrefab;
+    [SerializeField] private SellTurretUI _sellTurretPrefab;
 
     private TurretSO _selectedTurret;
     private BaseTurret _selectedTurretInstance;
@@ -76,6 +77,9 @@ public class TurretsUI : MonoBehaviour
 
         var turretItem = Instantiate(_turretItemPrefab, _container);
         turretItem.SetUpUpgrade(_selectedTurret, _selectedTurretInstance);
+
+        var sellItem = Instantiate(_sellTurretPrefab, _container);
+        sellItem.SetUp(_selectedTurret);
 
         _closeTurrentMenu.gameObject.SetActive(true);
     }

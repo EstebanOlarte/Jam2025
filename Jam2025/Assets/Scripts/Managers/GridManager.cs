@@ -37,6 +37,11 @@ public class GridManager : MonoBehaviour
         Instance = this;
     }
 
+    private void OnDestroy()
+    {
+        LoseGame = null;
+    }
+
     private void Start()
     {
         GameManager.Instance.GameStarted += OnGameStarted;
