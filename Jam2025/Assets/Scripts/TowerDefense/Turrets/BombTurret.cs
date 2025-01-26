@@ -112,4 +112,10 @@ public class BombTurret : BaseTurret
         // Destroy the bullet after it hits the target
         Destroy(bullet);
     }
+    public override void Upgrade()
+    {
+        base.Upgrade();
+        _damage *= 1.2f;
+        _bulletCooldow *= 0.95f;
+    }
 }

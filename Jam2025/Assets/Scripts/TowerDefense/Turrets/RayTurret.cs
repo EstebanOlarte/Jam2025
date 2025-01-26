@@ -93,4 +93,14 @@ public class RayTurret : BaseTurret
 
         return lowEnemies;
     }
+
+    public override void Upgrade()
+    {
+        base.Upgrade();
+        _damagePerTic *= 1.2f;
+        if (Level % 4 == 0)
+        {
+            _maxTargets += 1;
+        }
+    }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SimpleTurret : BaseTurret
 {
-    [SerializeField] private float _bulletCooldow;
+    [SerializeField] private float _bulletCooldown;
     [SerializeField] private float _damage;
 
     [SerializeField] private Transform _bulletPoint;
@@ -24,7 +24,7 @@ public class SimpleTurret : BaseTurret
             if (_timer <= 0)
             {
                 StartCoroutine(FireTo(firstEnemy));
-                _timer = _timer = _bulletCooldow;
+                _timer = _timer = _bulletCooldown;
             }
         }
 
@@ -89,6 +89,13 @@ public class SimpleTurret : BaseTurret
         {
             enemy.TakeDamage(_damage);
         }
+    }
+
+    override public void Upgrade()
+    {
+        base.Upgrade();
+        _damage *= 1.2f;
+        _bulletCooldown *= 0.9f;
     }
 
 }

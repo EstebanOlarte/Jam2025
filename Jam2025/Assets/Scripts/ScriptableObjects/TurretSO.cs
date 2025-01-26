@@ -23,6 +23,19 @@ public class TurretSO : ScriptableObject
 
         return price;
     }
+    public List<TurretPrice> GetTurretUpgradePrice(int currentLevel)
+    {
+        List<TurretPrice> price = new List<TurretPrice>();
+        foreach (var item in Price)
+        {
+            TurretPrice turretPrice = new TurretPrice();
+            turretPrice.CandyType = item.CandyType;
+            turretPrice.Price = item.Price * (5 + currentLevel);
+            price.Add(turretPrice);
+        }
+
+        return price;
+    }
 }
 
 [Serializable]

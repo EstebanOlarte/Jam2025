@@ -6,6 +6,10 @@ public class TurretPoint : MonoBehaviour
     [SerializeField] private Transform _turretPoint;
 
     private BaseTurret _turret;
+    private TurretSO _turretSO;
+
+    public BaseTurret Turret => _turret;
+    public TurretSO TurretSO => _turretSO;
 
     private void OnMouseDown()
     {
@@ -20,8 +24,9 @@ public class TurretPoint : MonoBehaviour
         return _turret != null;
     }
 
-    public void BuildTurret(BaseTurret prefab)
+    public void BuildTurret(TurretSO turretSO)
     {
-        _turret = Instantiate(prefab, _turretPoint.position, Quaternion.identity, transform);
+        _turretSO = turretSO;
+        _turret = Instantiate(turretSO.Prefab, _turretPoint.position, Quaternion.identity, transform);
     }
 }

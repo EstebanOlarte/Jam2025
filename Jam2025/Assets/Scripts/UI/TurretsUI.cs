@@ -7,6 +7,9 @@ public class TurretsUI : MonoBehaviour
     [SerializeField] private Button _closeTurrentMenu;
     [SerializeField] private TurretItemUI _turretItemPrefab;
 
+    private TurretSO _selectedTurret;
+    private BaseTurret _selectedTurretInstance;
+
     private void Start()
     {
         GameManager.Instance.TurretPointSelected += OnTurretPointSelected;
@@ -21,6 +24,13 @@ public class TurretsUI : MonoBehaviour
             {
                 SetUpTurretOptions();
             }
+            else
+            {
+                _selectedTurret = point.TurretSO;
+                _selectedTurretInstance = point.Turret;
+
+                SetUpTurretUpgrade();
+            }
         }
         else
         {
@@ -29,6 +39,10 @@ public class TurretsUI : MonoBehaviour
                 Destroy(child.gameObject);
             }
         }
+        LayoutRebuilder.ForceRebuildLayoutImmediate(_container.GetComponent<RectTransform>());
+        gameObject.SetActive(false);
+        gameObject.SetActive(true);
+        LayoutRebuilder.ForceRebuildLayoutImmediate(_container.GetComponent<RectTransform>());
     }
 
     private void SetUpTurretOptions()
@@ -51,5 +65,16 @@ public class TurretsUI : MonoBehaviour
     {
         GameManager.Instance.SelectTurretPoint(null);
         _closeTurrentMenu.gameObject.SetActive(false);
+    }
+
+    private void SetUpTurretUpgrade()
+    {
+        foreach (Transform child in _container)
+        {
+            Destroy(child.gameObject);
+        }
+
+        var turretItem = Instantiate(_turretItemPrefab, _container);
+        turretItem.SetUpUpgrade(_selectedTurret, _selectedTurretInstance);
     }
 }

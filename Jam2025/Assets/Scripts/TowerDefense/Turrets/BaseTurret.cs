@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class BaseTurret : Entity
 {
+    private int _level = 1;
+    public int Level => _level;
+
     [SerializeField] private float _range;
 
     protected List<BaseEnemy> GetEnemiesInRange()
@@ -30,5 +33,10 @@ public class BaseTurret : Entity
 
         // Draw a wire sphere to represent the range of the turret
         Gizmos.DrawWireSphere(transform.position, _range);
+    }
+
+    public virtual void Upgrade()
+    {
+        _level++;
     }
 }

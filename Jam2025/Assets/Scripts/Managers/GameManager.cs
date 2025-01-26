@@ -90,10 +90,16 @@ public class GameManager : MonoBehaviour
     }
     public void BuildTurret(TurretSO turret)
     {
-        _selectedTurretPoint.BuildTurret(turret.Prefab);
+        _selectedTurretPoint.BuildTurret(turret);
         DeselectTurretPoint();
 
         _priceMultiplier++;
+    }
+
+    public void UpgradeTurret(BaseTurret baseTurret)
+    {
+        baseTurret.Upgrade();
+        DeselectTurretPoint();
     }
 
     public void NewWave(int wave)

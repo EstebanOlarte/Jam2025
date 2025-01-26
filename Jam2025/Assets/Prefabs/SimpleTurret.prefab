@@ -49,7 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: 10
   _range: 2
-  _bulletCooldow: 0.6666667
+  _bulletCooldown: 0.6666667
   _damage: 4
   _bulletPoint: {fileID: 7566210070710858749}
   _bulletPrefab: {fileID: 4898811506900369836}
