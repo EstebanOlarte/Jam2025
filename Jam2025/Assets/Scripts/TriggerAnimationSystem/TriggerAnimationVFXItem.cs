@@ -45,6 +45,12 @@ public class TriggerAnimationVFXItem : TriggerAnimationItem<TriggerAnimationVFXD
                 particle.transform.localScale = this.target.localScale;
             }
         }
+
+        SpriteRenderer[] sprites = this.GetComponentsInChildren<SpriteRenderer>();
+
+        foreach (SpriteRenderer sprite in sprites) {
+            sprite.color = this.data.color ?? sprite.color;
+        }
     }
 
     protected override void Stop()
