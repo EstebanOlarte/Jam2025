@@ -11,6 +11,7 @@ public class SimpleTurret : BaseTurret
     [SerializeField] private GameObject _bulletPrefab;
     [SerializeField] private float _bulletSpeed;
     [SerializeField] private Transform _modelTransform;
+    [SerializeField] private TriggerAnimationVFX _animationVFXMuzzleFlash;
 
     private float _timer = 0;
 
@@ -78,6 +79,7 @@ public class SimpleTurret : BaseTurret
     {
         GameObject bullet = Instantiate(_bulletPrefab, _bulletPoint.position, Quaternion.identity);
         bullet.SetActive(true);
+        _animationVFXMuzzleFlash?.Trigger();
 
         while (enemy != null && Vector3.Distance(bullet.transform.position, enemy.transform.position) > 0.1f)
         {
