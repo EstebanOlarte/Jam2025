@@ -27,17 +27,14 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        Instance = this;
-    }
-
-    private void OnDestroy()
-    {
         GameStarted = null;
         ResourcesUpdated = null;
         DamageTaken = null;
         TurretPointSelected = null;
         WaveChange = null;
         ScoreChanged = null;
+
+        Instance = this;
     }
 
     private IEnumerator Start()
@@ -113,6 +110,14 @@ public class GameManager : MonoBehaviour
         DeselectTurretPoint();
 
         _priceMultiplier++;
+    }
+
+    public void SellTurret()
+    {
+        _selectedTurretPoint.SellTurret();
+        DeselectTurretPoint();
+
+        _priceMultiplier--;
     }
 
     public void UpgradeTurret(BaseTurret baseTurret)

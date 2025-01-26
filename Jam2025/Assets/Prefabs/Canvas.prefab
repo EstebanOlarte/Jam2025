@@ -1854,6 +1854,7 @@ MonoBehaviour:
   _container: {fileID: 294953142964747508}
   _closeTurrentMenu: {fileID: 3916707814370858243}
   _turretItemPrefab: {fileID: 945890995799412471, guid: 633690a311bf32646af23ffd64fd3e63, type: 3}
+  _sellTurretPrefab: {fileID: 7066012936477369950, guid: 21eb24b69b48b824184863ff44057096, type: 3}
 --- !u!1 &4338502325030221893
 GameObject:
   m_ObjectHideFlags: 0
