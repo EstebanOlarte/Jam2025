@@ -1,8 +1,5 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using UnityEditor.Purchasing;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public abstract class TriggerAnimation<T> : MonoBehaviour where T : TriggerAnimationData
 {
@@ -42,5 +39,10 @@ public abstract class TriggerAnimation<T> : MonoBehaviour where T : TriggerAnima
         }
 
         this.Trigger(false);
+    }
+
+    public void SetData(T data)
+    {
+        this.data = data;
     }
 }

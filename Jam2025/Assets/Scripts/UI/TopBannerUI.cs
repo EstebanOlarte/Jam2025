@@ -17,6 +17,11 @@ public class TopBannerUI : Menu
         GameManager.Instance.ScoreChanged += UpdateScore;
     }
 
+    private void OnDestroy()
+    {
+        GameManager.Instance.ScoreChanged -= UpdateScore;
+    }
+
     private void Update()
     {
         if (isTimerRunning)

@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class FeedbackUI : Popup
 {
@@ -15,7 +16,13 @@ public class FeedbackUI : Popup
     [SerializeField] private TMP_Text _waveWarning;
     [SerializeField] private float _waveWarningTime = 2f; // Duration for wave warning display
 
+    [SerializeField] private AnimationCurve _volume;
     private GameObject _currentCombo;
+
+    private const string cCombo2 = "SFX/Combo_2_SFX";
+    private const string cCombo3 = "SFX/Combo_3_SFX";
+    private const string cCombo4 = "SFX/Combo_4_SFX";
+    private const string cCombo5 = "SFX/Combo_5_SFX";
 
     /// <summary>
     /// Adds a new combo. Hides the previous combo, resets its timer, and displays the new one with animation.
@@ -23,6 +30,33 @@ public class FeedbackUI : Popup
     /// <param name="comboCounter">The combo count to display.</param>
     public void AddCombo(int comboCounter)
     {
+        TriggerAnimationSFX componentTrigger = GetComponent<TriggerAnimationSFX>();
+        TriggerAnimationSFXData data = new TriggerAnimationSFXData();
+        data.volume = _volume;
+
+        switch (comboCounter)
+        {
+            case 2:
+                data.path = cCombo2;
+                break;
+            case 3:
+                data.path = cCombo3;
+                break;
+            case 4:
+                data.path = cCombo4;
+                break;
+            case 5:
+                data.path = cCombo5;
+                break;
+            default:
+                data.path = cCombo5;
+                break;
+        }
+
+        componentTrigger.SetData(data);
+        GetComponent<TriggerAnimationSFX>().Trigger();
+
+
         if (_currentCombo != null)
         {
             LeanTween.cancel(_currentCombo);

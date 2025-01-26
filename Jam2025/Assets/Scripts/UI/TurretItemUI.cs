@@ -1,12 +1,7 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
-using static UnityEngine.GraphicsBuffer;
 
 public class TurretItemUI : MonoBehaviour
 {
@@ -21,6 +16,7 @@ public class TurretItemUI : MonoBehaviour
     private BaseTurret _baseTurret;
 
     [SerializeField] private CanvasGroup _canvasGroup;
+
 
     public void SetUp(TurretSO turret)
     {
@@ -66,6 +62,7 @@ public class TurretItemUI : MonoBehaviour
         }
         GameManager.Instance.ResourcesUpdated += OnResourceUpdated;
     }
+    
     private void OnResourceUpdated(Dictionary<CandySO, int> dictionary)
     {
         if (_baseTurret != null)
@@ -89,6 +86,7 @@ public class TurretItemUI : MonoBehaviour
             GameManager.Instance.BuildTurret(_turret);
         }
     }
+    
     private void UpgradeTurret()
     {
         if (CheckResources(_turret.GetTurretUpgradePrice(_baseTurret.Level)))
@@ -112,6 +110,7 @@ public class TurretItemUI : MonoBehaviour
         }
         return true;
     }
+
     private void OnDestroy()
     {
         GameManager.Instance.ResourcesUpdated -= OnResourceUpdated;

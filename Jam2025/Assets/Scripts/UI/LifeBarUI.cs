@@ -16,6 +16,11 @@ public class LifeBarUI : MonoBehaviour
         _entity.HealthChanged += UpdateLifeBar;
     }
 
+    private void OnDestroy()
+    {
+        _entity.HealthChanged -= UpdateLifeBar;
+    }
+
     private void Update()
     {
         transform.LookAt(transform.position + mainCam.forward);

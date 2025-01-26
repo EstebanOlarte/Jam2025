@@ -22,6 +22,11 @@ public class WaveController : MonoBehaviour
         GameManager.Instance.GameStarted += OnGameStarted;
     }
 
+    private void OnDestroy()
+    {
+        GameManager.Instance.GameStarted -= OnGameStarted;
+    }
+
     private void OnGameStarted(LevelConfigSO sO)
     {
         StartCoroutine(SpawnWaves());

@@ -15,4 +15,10 @@ public class TriggerAnimationSFX : TriggerAnimation<TriggerAnimationSFXData>
         instantiatedOb.SetData(target, position, direction, data);
         instantiatedOb.Trigger();
     }
+
+    public void TriggerAudio(Transform target, Vector3 position, Vector3 direction, TriggerAnimationSFXData data)
+    {
+        OnTrigger(target, position, direction, data);
+    }
+
 }

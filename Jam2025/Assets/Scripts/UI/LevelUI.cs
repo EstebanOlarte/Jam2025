@@ -15,6 +15,11 @@ public class LevelUI : MonoBehaviour
         UpdateLevelText(_turret.Level);
     }
 
+    private void OnDestroy()
+    {
+        _turret.LevelChanged -= UpdateLevelText;
+    }
+
     private void UpdateLevelText(int lvl)
     {
         _levelText.text = $"{lvl}";

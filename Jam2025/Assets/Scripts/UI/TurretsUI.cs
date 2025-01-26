@@ -17,6 +17,11 @@ public class TurretsUI : MonoBehaviour
         _closeTurrentMenu.onClick.AddListener(closeMenu);
     }
 
+    private void OnDestroy()
+    {
+        GameManager.Instance.TurretPointSelected -= OnTurretPointSelected;
+    }
+
     private void OnTurretPointSelected(TurretPoint point)
     {
         if (point != null)

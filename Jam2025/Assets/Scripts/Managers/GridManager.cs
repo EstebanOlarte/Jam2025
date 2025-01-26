@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -34,12 +35,20 @@ public class GridManager : MonoBehaviour
 
     private void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         Instance = this;
     }
 
     private void OnDestroy()
     {
         LoseGame = null;
+        GameManager.Instance.GameStarted -= OnGameStarted;
+        GameManager.Instance.DamageTaken -= OnDamageTaken;
     }
 
     private void Start()
@@ -47,6 +56,7 @@ public class GridManager : MonoBehaviour
         GameManager.Instance.GameStarted += OnGameStarted;
         GameManager.Instance.DamageTaken += OnDamageTaken;
     }
+
 
 
     private void OnGameStarted(LevelConfigSO levelConfig)

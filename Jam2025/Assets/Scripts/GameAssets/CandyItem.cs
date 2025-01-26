@@ -48,6 +48,12 @@ public class CandyItem : MonoBehaviour
         candyInput.DropCandy += OnDropCandy;
     }
 
+    private void OnDestroy()
+    {
+        var candyInput = GetComponent<CandyDirectionHandler>();
+        candyInput.DropCandy -= OnDropCandy;
+    }
+
     public void SetParticles(UIParticleAttractor attractor)
     {
         attractor.AddParticleSystem(_candyUI.UIParticleSystem);
@@ -62,7 +68,7 @@ public class CandyItem : MonoBehaviour
         {
             return;
         }
-
+        GetComponent<TriggerAnimationSFX>().Trigger();
         GridManager.Instance.SwapCandy(_currentPos, targetPos);
     }
 

@@ -13,6 +13,12 @@ public class MenuManager : MonoBehaviour
 
     private void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         Instance = this;
     }
 
@@ -20,6 +26,12 @@ public class MenuManager : MonoBehaviour
     {
         GridManager.Instance.LoseGame += OnLoseGame;
         GameManager.Instance.WaveChange += OnWaveChange;
+    }
+
+    private void OnDestroy()
+    {
+        GridManager.Instance.LoseGame -= OnLoseGame;
+        GameManager.Instance.WaveChange -= OnWaveChange;
     }
 
     private void OnLoseGame()

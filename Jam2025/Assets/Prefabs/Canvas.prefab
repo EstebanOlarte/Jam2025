@@ -1901,6 +1901,7 @@ GameObject:
   - component: {fileID: 1440538445544671169}
   - component: {fileID: 3450659653955554045}
   - component: {fileID: 4740097078993857825}
+  - component: {fileID: 2281807293801838790}
   m_Layer: 5
   m_Name: FeedbackUI
   m_TagString: Untagged
@@ -1960,6 +1961,75 @@ MonoBehaviour:
   _comboTime: 2
   _waveWarning: {fileID: 8045698955556665223}
   _waveWarningTime: 2
+  _volume:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.2
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0.2
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &2281807293801838790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4453250938323859011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59c2499b7b9366146af7f6796e24c49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data:
+    path: SFX/Combo_2_SFX
+    loop: 0
+    playOnEnable: 0
+    playOnDisable: 0
+    playOnce: 0
+    followTarget: 0
+    destroyWithTarget: 0
+    delay: 0
+    volume:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
 --- !u!1 &4644035606542442833
 GameObject:
   m_ObjectHideFlags: 0
@@ -1974,7 +2044,6 @@ GameObject:
   - component: {fileID: 1148916970678549907}
   - component: {fileID: 5432679039607512411}
   - component: {fileID: 4458437114431889662}
-  - component: {fileID: 1083946170208435751}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2101,33 +2170,6 @@ MonoBehaviour:
   TopBannerUI: {fileID: 8790712419659978764}
   LosePopup: {fileID: 7345363871753913642}
   FeedbackUI: {fileID: 4740097078993857825}
---- !u!114 &1083946170208435751
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4644035606542442833}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59c2499b7b9366146af7f6796e24c49b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  data:
-    path: SF/Swipe_SFX
-    loop: 0
-    playOnEnable: 0
-    playOnDisable: 0
-    playOnce: 0
-    followTarget: 0
-    destroyWithTarget: 0
-    delay: 0
-    volume:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
 --- !u!1 &5060091355493308828
 GameObject:
   m_ObjectHideFlags: 0

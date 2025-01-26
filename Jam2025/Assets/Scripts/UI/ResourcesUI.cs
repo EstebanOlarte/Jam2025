@@ -13,6 +13,11 @@ public class ResourcesUI : Menu
         GameManager.Instance.ResourcesUpdated += OnResourcesUpdated;
     }
 
+    private void OnDestroy()
+    {
+        GameManager.Instance.ResourcesUpdated -= OnResourcesUpdated;
+    }
+
     private void OnResourcesUpdated(Dictionary<CandySO, int> dictionary)
     {
         _text.text = "";
