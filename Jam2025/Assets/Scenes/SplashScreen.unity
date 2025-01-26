@@ -1117,9 +1117,9 @@ MonoBehaviour:
     Interface (UI)</size></b>\nJuan Diego Mozo  \n\n<b><size=50>Visual Effects (VFX)</size></b>\nDiego
     Santiago Rodr\xEDguez  \nJuan Diego Mozo  \nEsteban Olarte  \n\n<b><size=50>Programmers</size></b>\nDiego
     Santiago Rodr\xEDguez  \nJuan Diego Mozo  \nEsteban Olarte  \n\n<b><size=50>Audio</size></b>\n<b>Sound
-    Effects (SFX):</b>\nJhonny Alexis Atehort\xFAa  \n<b>Music:</b>\nJhonny Alexis
-    Atehort\xFAa  \n\n<b><size=50>Special Thanks</size></b>\nJoseph Olin  \n\n<size=35><i>Thank
-    you for playing!</i></size>"
+    Effects (SFX):</b>\nJhonny Alexis Atehort\xFAa\nPaulina Ramirez  \n<b>Music:</b>\nJhonny
+    Alexis Atehort\xFAa  \n\n<b><size=50>Special Thanks</size></b>\nJoseph Olin 
+    \n\n<size=35><i>Thank you for playing!</i></size>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bd04abb54c7c9ce479d13c15dcda9a27, type: 2}
   m_sharedMaterial: {fileID: 7196325390550747239, guid: bd04abb54c7c9ce479d13c15dcda9a27, type: 2}

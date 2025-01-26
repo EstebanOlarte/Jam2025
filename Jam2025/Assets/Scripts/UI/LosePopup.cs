@@ -13,6 +13,7 @@ public class LosePopup : Popup
     [SerializeField] private Button _resetBtn;
 
     private const string cHighScore = "Highscore";
+    private const string cScore = "Score";
 
     private void Start()
     {
@@ -23,8 +24,11 @@ public class LosePopup : Popup
 
     private void SetUIData()
     {
-        _scoreTMP.text = "0";
-        _highScoreTMP.text = "0";
+        _scoreTMP.text = PlayerPrefs.GetString(cScore);
+        _highScoreTMP.text = PlayerPrefs.GetString(cHighScore);
+        if (PlayerPrefs.HasKey(cHighScore))
+        { }
+
     }
 
     public void SetScore(int score)

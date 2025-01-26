@@ -98,6 +98,11 @@ public class GameManager : MonoBehaviour
     {
         _score += score;
         ScoreChanged?.Invoke(_score);
+
+        if (PlayerPrefs.HasKey("Score"))
+        {
+            PlayerPrefs.SetString("Score", score.ToString());
+        }
     }
 
     //Turrets

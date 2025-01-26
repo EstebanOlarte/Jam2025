@@ -38,7 +38,7 @@ public class MenuManager : MonoBehaviour
 
     private IEnumerator LoseGameCoroutine()
     {
-        float waitTime = 7f;
+        float waitTime = 5f;
         float slowDownDuration = 3f; // Duration to slow down time (in seconds)
         float targetTimeScale = 0.1f; // Minimum timescale before stopping
 
