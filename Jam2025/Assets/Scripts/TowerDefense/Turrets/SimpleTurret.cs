@@ -10,6 +10,7 @@ public class SimpleTurret : BaseTurret
     [SerializeField] private Transform _bulletPoint;
     [SerializeField] private GameObject _bulletPrefab;
     [SerializeField] private float _bulletSpeed;
+    [SerializeField] private Transform _modelTransform;
 
     private float _timer = 0;
 
@@ -57,11 +58,20 @@ public class SimpleTurret : BaseTurret
     }
     private void AimToEnemy(BaseEnemy enemy)
     {
-        Vector3 direction = (enemy.transform.position - transform.position).normalized;
-        direction.y = 0; // Keep only the horizontal direction
+        if (enemy.transform.position.x > transform.position.x)
+        {
+            _modelTransform.localScale = new Vector3(1, 1, 1);
+        }
+        else
+        {
+            _modelTransform.localScale = new Vector3(-1, 1, 1);
+        }
 
-        Quaternion lookRotation = Quaternion.LookRotation(direction);
-        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 10f);
+        //Vector3 direction = (enemy.transform.position - transform.position).normalized;
+        //direction.y = 0; // Keep only the horizontal direction
+
+        //Quaternion lookRotation = Quaternion.LookRotation(direction);
+        //transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 10f);
     }
 
     private IEnumerator FireTo(BaseEnemy enemy)
