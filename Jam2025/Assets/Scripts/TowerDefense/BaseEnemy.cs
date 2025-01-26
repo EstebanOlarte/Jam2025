@@ -8,6 +8,9 @@ public class BaseEnemy : Entity
 
     private float _distanceTraveled = 0;
 
+    private Vector2 _offset;
+    private const float _maxOffset = 0.3f;
+
     public void SetUp(List<Transform> waypoints, int waveNumber)
     {
         _health = _health + ((waveNumber - 1f) * (1f + (1.2f * Mathf.Floor(waveNumber / 4f))));
@@ -15,6 +18,8 @@ public class BaseEnemy : Entity
 
         _speed = Mathf.Min(_speed + (waveNumber * 0.01f), _speed * 3f);
 
+        _offset = new Vector2(Random.Range(-_maxOffset, _maxOffset), Random.Range(-_maxOffset, _maxOffset));
+        transform.position = waypoints[0].position + (Vector3)_offset;
         StartCoroutine(FollowPath(waypoints));
     }
 
@@ -26,7 +31,7 @@ public class BaseEnemy : Entity
         while (true)
         {
             // Calculate the distance to move in this frame
-            Vector3 direction = (targetWaypoint.position - transform.position).normalized;
+            Vector3 direction = (targetWaypoint.position + (Vector3)_offset - transform.position).normalized;
             float distanceToMove = _speed * Time.deltaTime;
 
             // Move towards the target waypoint
@@ -43,7 +48,7 @@ public class BaseEnemy : Entity
             }
 
             // Check if we have reached the target waypoint
-            if (Vector3.Distance(transform.position, targetWaypoint.position) < 0.1f)
+            if (Vector3.Distance(transform.position, targetWaypoint.position + (Vector3)_offset) < 0.1f)
             {
                 waypointIndex++;
                 if (waypointIndex >= waypoints.Count)

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,8 @@ public class BaseTurret : Entity
     public int Level => _level;
 
     [SerializeField] private float _range;
+
+    public event Action<int> LevelChanged;
 
     protected List<BaseEnemy> GetEnemiesInRange()
     {
@@ -38,5 +41,6 @@ public class BaseTurret : Entity
     public virtual void Upgrade()
     {
         _level++;
+        LevelChanged?.Invoke(_level);
     }
 }
