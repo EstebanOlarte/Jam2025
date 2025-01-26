@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
-  m_Name: ARCO SDF
+  m_Name: ARCO OUTLINE
   m_EditorClassIdentifier: 
-  hashCode: -1300018450
+  hashCode: -1559573985
   material: {fileID: 7125547837676040258}
-  materialHashCode: 138980238
+  materialHashCode: -419541153
   m_Version: 1.1.0
   m_SourceFontFileGUID: 79d7b8b87987f1a4ab99eaa3aa25dfee
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 79d7b8b87987f1a4ab99eaa3aa25dfee, type: 3}
@@ -1650,7 +1650,7 @@ Material:
     - _OutlineSoftness: 0
     - _OutlineUVSpeedX: 0
     - _OutlineUVSpeedY: 0
-    - _OutlineWidth: 0
+    - _OutlineWidth: 0.536
     - _PerspectiveFilter: 0.875
     - _Reflectivity: 10
     - _ScaleRatioA: 0.9
