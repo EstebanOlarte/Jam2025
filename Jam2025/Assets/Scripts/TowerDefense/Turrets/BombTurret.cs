@@ -97,6 +97,10 @@ public class BombTurret : BaseTurret
         while (targetEnemy != null && bullet.transform.position.y > targetEnemy.transform.position.y)
         {
             bullet.transform.position = Vector3.MoveTowards(bullet.transform.position, targetEnemy.transform.position, Time.deltaTime * 10f);
+            if (Vector3.Distance(bullet.transform.position, targetEnemy.transform.position) <= 0.02f)
+            {
+                break;
+            }
             yield return null;
         }
 

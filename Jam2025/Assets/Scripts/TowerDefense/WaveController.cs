@@ -31,10 +31,10 @@ public class WaveController : MonoBehaviour
     {
         while (true)
         {
+            yield return new WaitForSeconds(_timeBetweenWaves);
             _waveNumber++;
             GameManager.Instance.NewWave(_waveNumber);
             yield return SpawnWave();
-            yield return new WaitForSeconds(_timeBetweenWaves);
         }
     }
     private IEnumerator SpawnWave()
