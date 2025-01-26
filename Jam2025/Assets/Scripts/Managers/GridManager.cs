@@ -168,8 +168,11 @@ public class GridManager : MonoBehaviour
         _candysToExplode.Clear();
         RefillGrid();
 
+        if (_comboMultiplier > 1)
+        {
+            MenuManager.Instance.FeedbackUI.AddCombo(_comboMultiplier);
+        }
         _comboMultiplier++;
-        MenuManager.Instance.FeedbackUI.AddCombo(_comboMultiplier);
     }
 
     private void CalculateResources()

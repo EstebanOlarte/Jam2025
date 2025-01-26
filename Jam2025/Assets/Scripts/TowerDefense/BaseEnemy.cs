@@ -5,6 +5,7 @@ using UnityEngine;
 public class BaseEnemy : Entity
 {
     [SerializeField] private float _speed = 1f;
+    [SerializeField] private int _awardedScore;
 
     private float _distanceTraveled = 0;
 
@@ -68,5 +69,11 @@ public class BaseEnemy : Entity
     public float GetDistanceTraveled()
     {
         return _distanceTraveled;
+    }
+
+    protected override void Die()
+    {
+        base.Die();
+        GameManager.Instance.AddScore(_awardedScore);
     }
 }

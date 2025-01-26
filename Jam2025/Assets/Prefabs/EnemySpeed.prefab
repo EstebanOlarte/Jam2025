@@ -49,6 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: 5
   _speed: 0.54
+  _awardedScore: 31
 --- !u!135 &8332111786461504714
 SphereCollider:
   m_ObjectHideFlags: 0

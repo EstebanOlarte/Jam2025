@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 
     public static GameManager Instance { get; private set; }
 
+    private int _score = 0;
     private Dictionary<CandySO, int> _resources = new Dictionary<CandySO, int>();
     private int _priceMultiplier = 1;
 
@@ -20,8 +21,10 @@ public class GameManager : MonoBehaviour
     public event Action DamageTaken;
     public event Action<TurretPoint> TurretPointSelected;
     public event Action<int> WaveChange;
+    public event Action<int> ScoreChanged;
 
     public int PriceMultiplier => _priceMultiplier;
+    public int Score => _score;
 
     private void Awake()
     {
@@ -71,6 +74,12 @@ public class GameManager : MonoBehaviour
     public void TakeDamage()
     {
         DamageTaken?.Invoke();
+    }
+
+    public void AddScore(int score)
+    {
+        _score += score;
+        ScoreChanged?.Invoke(_score);
     }
 
     //Turrets
