@@ -13,7 +13,7 @@ public abstract class TriggerAnimation<T> : MonoBehaviour where T : TriggerAnima
 
     protected abstract string BasePrefabPath { get; }
 
-    protected abstract void OnTrigger(Transform target, T triggerAnimationData);
+    protected abstract void OnTrigger(Transform target, Vector3 position, T triggerAnimationData);
 
     public void Trigger(bool ignoreAlreadyPlayed = true)
     {
@@ -23,7 +23,7 @@ public abstract class TriggerAnimation<T> : MonoBehaviour where T : TriggerAnima
 
         this.alreadyPlayed = true;
 
-        this.OnTrigger(this.transform, this.data);
+        this.OnTrigger(this.transform, this.transform.position, this.data);
     }
 
     private void OnEnable()

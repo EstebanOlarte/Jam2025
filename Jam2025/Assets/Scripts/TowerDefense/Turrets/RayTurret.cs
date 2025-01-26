@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DigitalRuby.LightningBolt;
 using UnityEngine;
 
 public class RayTurret : BaseTurret
@@ -9,9 +10,9 @@ public class RayTurret : BaseTurret
     [SerializeField] private int _maxTargets;
 
     [SerializeField] private Transform _bulletPoint;
-    [SerializeField] private LineRenderer _rayPrefab;
+    [SerializeField] private LightningBoltScript _rayPrefab;
 
-    private List<LineRenderer> _rays = new List<LineRenderer>();
+    private List<LightningBoltScript> _rays = new List<LightningBoltScript>();
 
     private float _timer = 0;
 
@@ -30,18 +31,8 @@ public class RayTurret : BaseTurret
             {
                 if (lowEnemies.Count > i)
                 {
-                    int pointsCount = 7; // 5 intermediate points + start and end points
-                    _rays[i].positionCount = pointsCount;
-
-                    Vector3 startPosition = _bulletPoint.position;
-                    Vector3 endPosition = lowEnemies[i].transform.position;
-
-                    for (int j = 0; j < pointsCount; j++)
-                    {
-                        float t = (float)j / (pointsCount - 1);
-                        Vector3 intermediatePosition = Vector3.Lerp(startPosition, endPosition, t);
-                        _rays[i].SetPosition(j, intermediatePosition);
-                    }
+                    _rays[i].StartObject.transform.position = _bulletPoint.position;
+                    _rays[i].EndObject.transform.position = lowEnemies[i].transform.position;
 
                     _rays[i].gameObject.SetActive(true);
                 }
@@ -59,7 +50,7 @@ public class RayTurret : BaseTurret
         }
         else
         {
-            foreach (LineRenderer ray in _rays)
+            foreach (LightningBoltScript ray in _rays)
             {
                 ray.gameObject.SetActive(false);
             }

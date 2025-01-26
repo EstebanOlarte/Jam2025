@@ -1,9 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class TriggerAnimationVFXItem : TriggerAnimationItem<TriggerAnimationVFXData>
 {
-    private ParticleSystem[] particles;
+    private ParticleSystem[] particles = new ParticleSystem[0];
 
     protected override bool IsPlaying()
     {
@@ -26,12 +27,9 @@ public class TriggerAnimationVFXItem : TriggerAnimationItem<TriggerAnimationVFXD
 
     protected override void OnInit()
     {
-        if (this.particles != null) {
-            return;
-        }
-
         GameObject ob = Resources.Load<GameObject>(this.data.path);
         if (ob == null) {
+            Debug.LogError($"Could not find object in path: {this.data.path}", this);
             return;
         }
         Instantiate(ob, this.transform);
