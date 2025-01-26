@@ -19,4 +19,4 @@ MonoBehaviour:
   - CandyType: {fileID: 11400000, guid: e343134cf8d160942bd7472413e4cf10, type: 2}
     Price: 10
   Prefab: {fileID: 2856458869260049230, guid: f84e64d23cb340d40a314f5e7ef7f2f5, type: 3}
-  Image: {fileID: 21300000, guid: 54bd10cd70e234b48b466d57ab366bf9, type: 3}
+  Image: {fileID: 21300000, guid: 9d9cd8c3f1cc5d04e9469aa8d8d772e5, type: 3}

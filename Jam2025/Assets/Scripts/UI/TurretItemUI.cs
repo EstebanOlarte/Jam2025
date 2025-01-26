@@ -26,7 +26,7 @@ public class TurretItemUI : MonoBehaviour
         _price.text = string.Empty;
         foreach (var price in turret.GetTurretPrice())
         {
-            _price.text += $"{price.CandyType.Name}: {price.Price} \n";
+            _price.text += $"<sprite={price.CandyType.TextReference}>: {price.Price} \n";
         }
 
         _button.onClick.AddListener(OnButtonClicked);

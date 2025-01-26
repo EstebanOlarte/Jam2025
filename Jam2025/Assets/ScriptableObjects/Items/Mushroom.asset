@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Mushroom
   m_EditorClassIdentifier: 
   Name: Mushroom
-  Color: {r: 1, g: 0.5424669, b: 0, a: 1}
+  Color: {r: 1, g: 0.9829079, b: 0, a: 1}
   Image: {fileID: 21300000, guid: 20f9425b054d782458b93fb487335382, type: 3}
   TextReference: 4
   Weight: 0.2

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class ResourcesUI : MonoBehaviour
+public class ResourcesUI : Menu
 {
     [SerializeField] private TextMeshProUGUI _text;
     public UIParticleAttractor UIAttractor;

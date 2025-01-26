@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _candyTypes:
   - {fileID: 11400000, guid: e343134cf8d160942bd7472413e4cf10, type: 2}
-  - {fileID: 11400000, guid: 90f588324cdcb2149bd7acec4bc5d5c3, type: 2}
   - {fileID: 11400000, guid: 8206cd7722046dd4daff03123d1ef04c, type: 2}
   - {fileID: 11400000, guid: d807f5dee5ebd474dbcf2f9f64fcd640, type: 2}
+  - {fileID: 11400000, guid: 90f588324cdcb2149bd7acec4bc5d5c3, type: 2}
   _turrets:
   - {fileID: 11400000, guid: 9cad2e2075e5c774e81992baf3e1722f, type: 2}
   - {fileID: 11400000, guid: 0aaf9b417a788524286814001fc422fe, type: 2}
