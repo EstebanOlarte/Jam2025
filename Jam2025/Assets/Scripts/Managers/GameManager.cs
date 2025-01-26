@@ -15,7 +15,6 @@ public class GameManager : MonoBehaviour
 
     private TurretPoint _selectedTurretPoint;
 
-
     public event Action<LevelConfigSO> GameStarted;
     public event Action<Dictionary<CandySO, int>> ResourcesUpdated;
     public event Action DamageTaken;
@@ -30,6 +29,17 @@ public class GameManager : MonoBehaviour
     {
         Instance = this;
     }
+
+    private void OnDestroy()
+    {
+        GameStarted = null;
+        ResourcesUpdated = null;
+        DamageTaken = null;
+        TurretPointSelected = null;
+        WaveChange = null;
+        ScoreChanged = null;
+    }
+
     private IEnumerator Start()
     {
         foreach (var candy in _levelConfig.CandyTypes)
