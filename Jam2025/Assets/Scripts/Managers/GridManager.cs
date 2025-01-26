@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,8 @@ using UnityEngine.UI;
 
 public class GridManager : MonoBehaviour
 {
+    public Action LoseGame;
+
     [Header("Grid")]
     [SerializeField] private Transform _gridParent;
     [SerializeField] private CandyItem _candyPrefab;
@@ -52,13 +55,6 @@ public class GridManager : MonoBehaviour
     private void CreateGrid(Vector2Int gridSize)
     {
         _candyGrid = new List<CandyItem>[gridSize.x];
-
-        //RectTransform rectTransform = _gridParent.GetComponent<RectTransform>();
-        //RectTransform rectParentTransform = _gridParent.parent.GetComponent<RectTransform>();
-        //rectTransform.anchorMin = new Vector2(0.5f, 0.5f);
-        //rectTransform.anchorMax = new Vector2(0.5f, 0.5f);
-        //rectTransform.sizeDelta = new Vector2(rectParentTransform.rect.width, rectParentTransform.rect.height);
-
 
         for (int i = 0; i < gridSize.x; i++)
         {
@@ -418,7 +414,7 @@ public class GridManager : MonoBehaviour
                 {
                     if (!_candyGrid[i][j + 1].IsBlocked)
                     {
-                        _candyGrid[i][j+1].Block();
+                        _candyGrid[i][j + 1].Block();
                         break;
                     }
                 }
@@ -432,6 +428,26 @@ public class GridManager : MonoBehaviour
         {
             item[0].Block();
         }
+
+        if (IsAllVisibleCandyBlocked())
+        {
+            LoseGame?.Invoke();
+        }
+    }
+
+    private bool IsAllVisibleCandyBlocked()
+    {
+        foreach (var column in _candyGrid)
+        {
+            for (int j = 0; j < column.Count / 2; j++) // Only check the visible half
+            {
+                if (!column[j].IsBlocked)
+                {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     private void UnblockCandies(CandyItem candy)

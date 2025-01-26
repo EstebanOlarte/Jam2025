@@ -7,14 +7,32 @@ public class MenuManager : MonoBehaviour
     public static MenuManager Instance;
 
     [Header("Menus")]
-    [SerializeField] private List<Menu> _menus;
 
     [Header("Popup Items")]
-    [SerializeField] private List<Popup> _popups;
+    [SerializeField] private LosePopup _losePopup;
+    [SerializeField] private TopBannerUI _topBannerUI;
 
     private void Awake()
     {
         Instance = this;
     }
+
+    private void Start()
+    {
+        GridManager.Instance.LoseGame += OnLoseGame;
+        GameManager.Instance.WaveChange += OnWaveChange;
+    }
+
+    private void OnLoseGame()
+    {
+        Time.timeScale = 0;
+        _losePopup.gameObject.SetActive(true);
+    }
+
+    private void OnWaveChange (int newWave)
+    {
+        _topBannerUI.UpdateWave(newWave);
+    }
+
 
 }

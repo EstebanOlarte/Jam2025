@@ -815,7 +815,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 100
   field of view: 60
   orthographic: 1
   orthographic size: 5
@@ -906,8 +906,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minY: 2.6
-  maxY: 4.7
-  swipeSpeed: 10
+  maxY: 5.2
+  swipeSpeed: 400
+  _layerIgnore:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &529212360
 GameObject:
   m_ObjectHideFlags: 0

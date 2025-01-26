@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class WaveController : MonoBehaviour
@@ -9,8 +8,6 @@ public class WaveController : MonoBehaviour
     [SerializeField] private BaseEnemy _basicEnemyPrefab;
     [SerializeField] private BaseEnemy _speedEnemyPrefab;
     [SerializeField] private BaseEnemy _tankEnemyPrefab;
-
-
 
     [SerializeField] private Path _path;
     [SerializeField] private float _timeBetweenWaves = 5f;
@@ -27,14 +24,15 @@ public class WaveController : MonoBehaviour
 
     private void OnGameStarted(LevelConfigSO sO)
     {
-
         StartCoroutine(SpawnWaves());
     }
+
     private IEnumerator SpawnWaves()
     {
         while (true)
         {
             _waveNumber++;
+            GameManager.Instance.NewWave(_waveNumber);
             yield return SpawnWave();
             yield return new WaitForSeconds(_timeBetweenWaves);
         }

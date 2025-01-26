@@ -1,5 +1,7 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LosePopup : Popup
 {
@@ -8,8 +10,14 @@ public class LosePopup : Popup
     [SerializeField] private GameObject _newHighScore;
 
     [SerializeField] private GameObject _scoreText;
+    [SerializeField] private Button _resetBtn;
 
     private const string cHighScore = "Highscore";
+
+    private void Start()
+    {
+        _resetBtn.onClick.AddListener(() => ResetLevel());
+    }
 
     public void SetScore(int score)
     {
@@ -39,5 +47,10 @@ public class LosePopup : Popup
             PlayerPrefs.SetInt(cHighScore, newScore);
             _newHighScore.SetActive(true);
         }
+    }
+
+    private void ResetLevel()
+    {
+
     }
 }

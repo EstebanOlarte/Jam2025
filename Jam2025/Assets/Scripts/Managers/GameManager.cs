@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     public event Action<Dictionary<CandySO, int>> ResourcesUpdated;
     public event Action DamageTaken;
     public event Action<TurretPoint> TurretPointSelected;
+    public event Action<int> WaveChange;
 
     public int PriceMultiplier => _priceMultiplier;
 
@@ -93,5 +94,10 @@ public class GameManager : MonoBehaviour
         DeselectTurretPoint();
 
         _priceMultiplier++;
+    }
+
+    public void NewWave(int wave)
+    {
+        WaveChange?.Invoke(wave);
     }
 }

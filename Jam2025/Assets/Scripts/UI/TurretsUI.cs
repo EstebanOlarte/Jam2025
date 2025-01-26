@@ -1,16 +1,16 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TurretsUI : MonoBehaviour
 {
     [SerializeField] private Transform _container;
+    [SerializeField] private Button _closeTurrentMenu;
     [SerializeField] private TurretItemUI _turretItemPrefab;
 
     private void Start()
     {
         GameManager.Instance.TurretPointSelected += OnTurretPointSelected;
+        _closeTurrentMenu.onClick.AddListener(closeMenu);
     }
 
     private void OnTurretPointSelected(TurretPoint point)
@@ -43,5 +43,13 @@ public class TurretsUI : MonoBehaviour
             var turretItem = Instantiate(_turretItemPrefab, _container);
             turretItem.SetUp(turret);
         }
+
+        _closeTurrentMenu.gameObject.SetActive(true);
+    }
+
+    private void closeMenu()
+    {
+        GameManager.Instance.SelectTurretPoint(null);
+        _closeTurrentMenu.gameObject.SetActive(false);
     }
 }
