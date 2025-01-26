@@ -10,6 +10,8 @@ public class BombTurret : BaseTurret
 
     [SerializeField] private GameObject _bulletPrefab;
 
+    [SerializeField] private Animator _animator;
+
     private float _timer = 0;
 
     private void Update()
@@ -65,6 +67,10 @@ public class BombTurret : BaseTurret
         {
             yield break;
         }
+
+        _animator.SetTrigger("Attack");
+
+        yield return new WaitForSeconds(0.35f);
 
         BaseEnemy targetEnemy = enemies[0];
         Vector3 spawnPosition = targetEnemy.transform.position + Vector3.up * 2f; // Spawn a bit above the enemy
