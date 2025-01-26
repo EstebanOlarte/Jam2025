@@ -13,6 +13,8 @@ public class TopBannerUI : Menu
     private void Start()
     {
         StartTimer();
+
+        GameManager.Instance.ScoreChanged += UpdateScore;
     }
 
     private void Update()
@@ -26,7 +28,7 @@ public class TopBannerUI : Menu
 
     public void UpdateScore(int score)
     {
-        _score.text = score.ToString();
+        _score.text = score.ToString("N0");
     }
 
     public void UpdateWave(int wave)
