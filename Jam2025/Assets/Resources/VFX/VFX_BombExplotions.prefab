@@ -133,7 +133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mLight: {fileID: 7310456716812802570}
   duration: 0.1
-  delay: 0.4
+  delay: 0.3
   from: 2
   to: 0
 --- !u!1 &3389805986160325620
