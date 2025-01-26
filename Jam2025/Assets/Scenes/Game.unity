@@ -1033,6 +1033,7 @@ GameObject:
   m_Component:
   - component: {fileID: 594882410}
   - component: {fileID: 594882411}
+  - component: {fileID: 594882412}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -1117,6 +1118,29 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &594882412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 594882409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_RenderingLayers: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_ShadowRenderingLayers: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
 --- !u!1 &608866808
 GameObject:
   m_ObjectHideFlags: 0
@@ -1347,11 +1371,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 684c559f6353235448742885b13a440b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyPrefab: {fileID: 5708134408801798703, guid: f6495bb35b6cb164e81047184c01442d, type: 3}
+  _basicEnemyPrefab: {fileID: 5708134408801798703, guid: d9fe6230856c89d4eb4fc1f7eb864818, type: 3}
+  _speedEnemyPrefab: {fileID: 5708134408801798703, guid: fc853d796cb65624aa5147a1c7471cd1, type: 3}
+  _tankEnemyPrefab: {fileID: 5708134408801798703, guid: 2bdbf12986180444a8af880a7ec2f83c, type: 3}
   _path: {fileID: 1925219126}
-  _timeBetweenWaves: 10
+  _timeBetweenWaves: 5
   _timeBetweenEnemies: 1
-  _numberOfEnemies: 10
+  _numberOfEnemies: 15
 --- !u!1 &866259967
 GameObject:
   m_ObjectHideFlags: 0

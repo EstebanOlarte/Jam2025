@@ -103,6 +103,8 @@ public class GridManager : MonoBehaviour
         }
         _backgroundGridLayout.spacing = new Vector2(_candyPrefab.Padding, _candyPrefab.Padding);
         _backgroundGridLayout.constraintCount = gridSize.x;
+        Vector2 cellSize = _candyGrid[0][0].GetComponent<RectTransform>().sizeDelta;
+        _backgroundGridLayout.cellSize = cellSize;
 
         for (int i = 0; i < gridSize.x * gridSize.y ; i++)
         {

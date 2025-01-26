@@ -133,8 +133,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: 10
   _range: 2
-  _bulletCooldow: 2
-  _damage: 8
+  _bulletCooldow: 2.5
+  _damage: 12
   _bulletRadius: 0.7
   _bulletPrefab: {fileID: 6604865178898616496}
 --- !u!1 &6604865178898616496

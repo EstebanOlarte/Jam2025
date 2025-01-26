@@ -10,6 +10,20 @@ public class TurretSO : ScriptableObject
     public List<TurretPrice> Price;
     public BaseTurret Prefab;
     public Sprite Image;
+
+    public List<TurretPrice> GetTurretPrice()
+    {
+        List<TurretPrice> price = new List<TurretPrice>();
+        foreach (var item in Price)
+        {
+            TurretPrice turretPrice = new TurretPrice();
+            turretPrice.CandyType = item.CandyType;
+            turretPrice.Price = item.Price * GameManager.Instance.PriceMultiplier;
+            price.Add(turretPrice);
+        }
+
+        return price;
+    }
 }
 
 [Serializable]

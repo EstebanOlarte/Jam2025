@@ -24,7 +24,7 @@ public class TurretItemUI : MonoBehaviour
         _image.sprite = turret.Image;
         _name.text = turret.Name;
         _price.text = string.Empty;
-        foreach (var price in turret.Price)
+        foreach (var price in turret.GetTurretPrice())
         {
             _price.text += $"{price.CandyType.Name}: {price.Price} \n";
         }
@@ -36,7 +36,7 @@ public class TurretItemUI : MonoBehaviour
     {
         if (CheckResources())
         {
-            foreach (var item in _turret.Price)
+            foreach (var item in _turret.GetTurretPrice())
             {
                 GameManager.Instance.TryToSpendResource(item.CandyType, item.Price);
             }
@@ -46,7 +46,7 @@ public class TurretItemUI : MonoBehaviour
 
     private bool CheckResources()
     {
-        foreach (var price in _turret.Price)
+        foreach (var price in _turret.GetTurretPrice())
         {
             if (!GameManager.Instance.HasEnoughResources(price.CandyType, price.Price))
             {
