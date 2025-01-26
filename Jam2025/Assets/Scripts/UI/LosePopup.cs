@@ -51,6 +51,6 @@ public class LosePopup : Popup
 
     private void ResetLevel()
     {
-
+        SceneManager.LoadScene(0);
     }
 }
