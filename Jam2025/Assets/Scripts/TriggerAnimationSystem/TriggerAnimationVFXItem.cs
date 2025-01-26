@@ -29,7 +29,7 @@ public class TriggerAnimationVFXItem : TriggerAnimationItem<TriggerAnimationVFXD
     {
         GameObject ob = Resources.Load<GameObject>(this.data.path);
         if (ob == null) {
-            Debug.LogError($"Could not find object in path: {this.data.path}", this);
+            Debug.LogWarning($"Could not find object in path: {this.data.path}", this);
             return;
         }
         Instantiate(ob, this.transform);

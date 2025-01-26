@@ -12,7 +12,7 @@ public class TriggerAnimationSFXItem : TriggerAnimationItem<TriggerAnimationSFXD
     {
         AudioClip audioClip = Resources.Load<AudioClip>(this.data.path);
         if (audioClip == null) {
-            Debug.LogError($"Could not find audio in path: {this.data.path}", this);
+            Debug.LogWarning($"Could not find audio in path: {this.data.path}", this);
             return;
         }
 
