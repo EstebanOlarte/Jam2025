@@ -12,11 +12,12 @@ public abstract class TriggerAnimationItem<T> : MonoBehaviour where T : TriggerA
     protected abstract void OnTrigger();
     protected abstract void OnInit();
 
-    public void SetData(Transform target, Vector3 position, T triggerAnimationData)
+    public void SetData(Transform target, Vector3 position, Vector3 direction, T triggerAnimationData)
     {
         this.target = target;
         this.data = triggerAnimationData;
         this.transform.position = position;
+        this.transform.LookAt(this.transform.position + direction);
         this.OnInit();
         this.hasInitialized = true;
     }
