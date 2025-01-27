@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MenuManager : MonoBehaviour
@@ -55,8 +54,6 @@ public class MenuManager : MonoBehaviour
         }
 
         Time.timeScale = 0f;
-
-        Time.timeScale = 0;
         LosePopup.gameObject.SetActive(true);
     }
 

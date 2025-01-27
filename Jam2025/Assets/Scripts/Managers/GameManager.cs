@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -10,7 +11,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
     private int _score = 0;
-    private Dictionary<CandySO, int> _resources = new Dictionary<CandySO, int>();
+    public Dictionary<CandySO, int> Resources = new Dictionary<CandySO, int>();
     private int _priceMultiplier = 1;
 
     private TurretPoint _selectedTurretPoint;
@@ -52,13 +53,14 @@ public class GameManager : MonoBehaviour
     {
         foreach (var candy in _levelConfig.CandyTypes)
         {
-            _resources.Add(candy, 0);
+            Resources.Add(candy, 0);
         }
         
         yield return new WaitForEndOfFrame();
 
-        ResourcesUpdated?.Invoke(_resources);
+        ResourcesUpdated?.Invoke(Resources);
         GameStarted?.Invoke(_levelConfig);
+        PlayerPrefs.SetInt("Score", 0);
     }
 
     private void Update()
@@ -71,20 +73,20 @@ public class GameManager : MonoBehaviour
 
     public void AddResource(CandySO candy, int quantity)
     {
-        _resources[candy] += quantity;
+        Resources[candy] += quantity;
 
-        ResourcesUpdated?.Invoke(_resources);
+        ResourcesUpdated?.Invoke(Resources);
     }
     public bool HasEnoughResources(CandySO candy, int quantity)
     {
-        return _resources[candy] >= quantity;
+        return Resources[candy] >= quantity;
     }
     public bool TryToSpendResource(CandySO candy, int quantity)
     {
-        if (_resources[candy] >= quantity)
+        if (Resources[candy] >= quantity)
         {
-            _resources[candy] -= quantity;
-            ResourcesUpdated?.Invoke(_resources);
+            Resources[candy] -= quantity;
+            ResourcesUpdated?.Invoke(Resources);
             return true;
         }
         return false;
@@ -98,11 +100,7 @@ public class GameManager : MonoBehaviour
     {
         _score += score;
         ScoreChanged?.Invoke(_score);
-
-        if (PlayerPrefs.HasKey("Score"))
-        {
-            PlayerPrefs.SetString("Score", score.ToString());
-        }
+        PlayerPrefs.SetInt("Score", _score);
     }
 
     //Turrets
