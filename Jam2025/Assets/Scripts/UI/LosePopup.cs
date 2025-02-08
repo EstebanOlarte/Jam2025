@@ -10,9 +10,11 @@ public class LosePopup : Popup
     [SerializeField] private TMP_Text _scoreTMP;
     [SerializeField] private TMP_Text _highScoreTMP;
     [SerializeField] private GameObject _newHighScore;
+    [SerializeField] private Transform _container;
 
     [SerializeField] private GameObject _candieText;
     [SerializeField] private Button _resetBtn;
+    [SerializeField] private Button _backMenuBtn;
 
     private const string cHighScore = "Highscore";
     private const string cScore = "Score";
@@ -21,6 +23,7 @@ public class LosePopup : Popup
 
     private void Start()
     {
+        _backMenuBtn.onClick.AddListener(() => BackMenu());
         _resetBtn.onClick.AddListener(() => ResetLevel());
         SetUIData();
     }
@@ -58,9 +61,9 @@ public class LosePopup : Popup
 
     private IEnumerator SetCandies()
     {
-        foreach (var candy in GameManager.Instance.Resources)
+        foreach (var candy in GameManager.Instance.ResourcesCollected)
         {
-            GameObject newCandyText = Instantiate(_candieText, transform);
+            GameObject newCandyText = Instantiate(_candieText, _container);
             newCandyText.SetActive(true);
 
             TMP_Text candyTMP = newCandyText.GetComponent<TMP_Text>();
@@ -73,9 +76,15 @@ public class LosePopup : Popup
         }
     }
 
-    private void ResetLevel()
+    private void BackMenu()
     {
         Time.timeScale = 1;
         SceneManager.LoadScene(0);
+    }
+
+    private void ResetLevel()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(1);
     }
 }

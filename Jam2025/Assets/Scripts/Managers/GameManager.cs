@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -12,11 +11,13 @@ public class GameManager : MonoBehaviour
 
     private int _score = 0;
     public Dictionary<CandySO, int> Resources = new Dictionary<CandySO, int>();
+    public Dictionary<CandySO, int> ResourcesCollected = new Dictionary<CandySO, int>();
     private int _priceMultiplier = 1;
 
     private TurretPoint _selectedTurretPoint;
 
     public event Action<LevelConfigSO> GameStarted;
+    public event Action GameStart;
     public event Action<Dictionary<CandySO, int>> ResourcesUpdated;
     public event Action DamageTaken;
     public event Action<TurretPoint> TurretPointSelected;
@@ -40,6 +41,7 @@ public class GameManager : MonoBehaviour
     private void OnDestroy()
     {
         GameStarted = null;
+        GameStart = null;
         ResourcesUpdated = null;
         DamageTaken = null;
         TurretPointSelected = null;
@@ -54,6 +56,7 @@ public class GameManager : MonoBehaviour
         foreach (var candy in _levelConfig.CandyTypes)
         {
             Resources.Add(candy, 0);
+            ResourcesCollected.Add(candy, 0);
         }
         
         yield return new WaitForEndOfFrame();
@@ -61,6 +64,7 @@ public class GameManager : MonoBehaviour
         ResourcesUpdated?.Invoke(Resources);
         GameStarted?.Invoke(_levelConfig);
         PlayerPrefs.SetInt("Score", 0);
+        GameStart?.Invoke();
     }
 
     private void Update()
@@ -74,6 +78,7 @@ public class GameManager : MonoBehaviour
     public void AddResource(CandySO candy, int quantity)
     {
         Resources[candy] += quantity;
+        ResourcesCollected[candy] += quantity;
 
         ResourcesUpdated?.Invoke(Resources);
     }
